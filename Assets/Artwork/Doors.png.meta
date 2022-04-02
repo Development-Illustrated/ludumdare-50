@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: -4950680412457382125
     second: Doors_1
+  - first:
+      213: -551082938411016477
+    second: Doors_2
+  - first:
+      213: 3499683669041570755
+    second: Doors_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -146,6 +152,48 @@ TextureImporter:
       bones: []
       spriteID: 31f4efa0566ab4bb0800000000000000
       internalID: -4950680412457382125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Doors_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ee9b3ebcf82a58f0800000000000000
+      internalID: -551082938411016477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Doors_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c3657f31cf519030800000000000000
+      internalID: 3499683669041570755
       vertices: []
       indices: 
       edges: []
