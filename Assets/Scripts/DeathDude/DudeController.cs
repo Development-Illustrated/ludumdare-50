@@ -13,37 +13,76 @@ public class DudeController : MonoBehaviour
     [SerializeField] private float acceleration;
     [SerializeField] private float deceleration;
     [SerializeField] private float gravity;
+    [SerializeField] private float timeBetweenDecisions;
+    [SerializeField] private float randomChanceChangeDirection;
 
     [Header("State")]
-    public bool isGoingLeft;
-    private Vector3 velocity;
+    public bool isGoingRight;
+    public Vector3 movement;
+    public float currentSpeed;
+    public float nextDecisionTime;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        isGoingLeft = utils.randomBoolean();
+        isGoingRight = utils.randomBoolean();
+        currentSpeed = 0f;
         rb = GetComponent<Rigidbody2D>();
+        nextDecisionTime = Time.time + timeBetweenDecisions;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Time.time > nextDecisionTime)
+        {
+            nextDecisionTime = Time.time  + timeBetweenDecisions;
+            if(Random.Range(0f, 1f) > randomChanceChangeDirection)
+            {
+                bool newdirection = utils.randomBoolean();
+                if(newdirection != isGoingRight)
+                {
+                    Debug.Log("Changing direction");
+                }
+
+                isGoingRight = newdirection;
+            }
+
+        }
     }
 
     void FixedUpdate()
     {
-        if (isGoingLeft)
+        if (isGoingRight)
         {
-            velocity = new Vector3(rb.velocity.x - acceleration, rb.velocity.y, 0f);
+            if (currentSpeed < topSpeed)
+            {
+                currentSpeed = currentSpeed + acceleration * Time.fixedDeltaTime;
+            }
+            else
+            {
+                currentSpeed = currentSpeed - deceleration * Time.fixedDeltaTime;
+            }
+            
+            
         }
-        else
+        else if (!isGoingRight)
         {
-            velocity = new Vector3(rb.velocity.x + acceleration, rb.velocity.y, 0f);
+            if(currentSpeed > -topSpeed)
+            {
+                currentSpeed = currentSpeed - acceleration * Time.fixedDeltaTime;
+            }
+            else
+            {
+                currentSpeed = currentSpeed + deceleration * Time.fixedDeltaTime;
+            }
         }
+        
+        movement = new Vector3(currentSpeed, -gravity, 0f);
 
-        rb.MovePosition(transform.position + currentVelocity * Time.deltaTime);
+        rb.MovePosition(transform.position + movement * Time.fixedDeltaTime);
     }
 }
 
