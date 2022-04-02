@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
         HideElements(gameOverObjects);
         ShowElements(inGameObjects);
 
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Additive);
         // Load game
     }
 
@@ -56,6 +57,7 @@ public class UIManager : MonoBehaviour
         HideElements(gameOverObjects);
         HideElements(pauseObjects);
         HideElements(inGameObjects);
+        SceneManager.UnloadSceneAsync("GameScene");
 
         ShowElements(mainMenuObjects);
     }
