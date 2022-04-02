@@ -2,57 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
-    GameObject[] gameOverObjects;
-    GameObject[] pauseObjects;
-    GameObject[] mainMenuObjects;
-    GameObject[] inGameObjects;
-    // PlayerController playerController;
+    public InputAction playerInputs;
+    [SerializeField] GameObject[] gameOverObjects;
+    [SerializeField] GameObject[] pauseObjects;
+    [SerializeField] GameObject[] mainMenuObjects;
+    [SerializeField] GameObject[] inGameObjects;
+
+
+    private bool isPaused;
+
+    private void Awake()
+    {
+        playerInputs = new InputAction();
+    }
 
     void Start()
     {
+        isPaused = false;
         Time.timeScale = 1;
-        gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
-        pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnGamePause");
-        mainMenuObjects = GameObject.FindGameObjectsWithTag("ShowOnMainMenu");
-        inGameObjects = GameObject.FindGameObjectsWithTag("ShowInGame");
-
         HideElements(gameOverObjects);
         HideElements(pauseObjects);
         HideElements(inGameObjects);
-
-        // Set player controller?
-        // if (Application.loadedLevel == "MainLevel") {
-        //     // playerController = new PlayerController();
-        // }
-        Debug.Log(Time.timeScale);
+        ShowElements(mainMenuObjects);
     }
     
-    void Update () {
-		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-		{
-			if(Time.timeScale == 1)
-			{
-				Time.timeScale = 0;
-                ShowElements(pauseObjects);
-                HideElements(inGameObjects);
-			} else if (Time.timeScale == 0){
-				Time.timeScale = 1;
-                HideElements(pauseObjects);
-                ShowElements(inGameObjects);
-			}
-		}
 
-        // if player is dead
-		// if (false) {
-        //     GameOver();
-		// }
-	}
 
+    // ----- BUTTON CALLBACKS ----- //
     public void StartGame()
     {
+        isPaused = false;
+        Time.timeScale = 1;
         HideElements(mainMenuObjects);
         HideElements(pauseObjects);
         HideElements(gameOverObjects);
@@ -74,6 +58,27 @@ public class UIManager : MonoBehaviour
         HideElements(inGameObjects);
 
         ShowElements(mainMenuObjects);
+    }
+
+    public void Pause(InputAction.CallbackContext obj)
+    {
+        if(obj.performed)
+        {    
+            if(!isPaused)
+            {
+                Time.timeScale = 0;
+                ShowElements(pauseObjects);
+                HideElements(inGameObjects);
+                isPaused = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                HideElements(pauseObjects);
+                ShowElements(inGameObjects);
+                isPaused = false;
+            }
+        }
     }
 
     public void QuitGame()
