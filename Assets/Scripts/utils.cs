@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class utils
+public static class utils
 {
-    public bool randomBoolean()
+    public static bool randomBoolean()
     {
         if (Random.value >= 0.5)
         {
