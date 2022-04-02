@@ -6,18 +6,19 @@ public class Interactable : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
 
+    [SerializeField] private int interactionTime;
     [SerializeField] private Sprite alternateSprite;
     [SerializeField] private Color alternateColor;
     private Sprite originalSprite;
     private Color originalColor;
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         originalSprite = spriteRenderer.sprite;
     }
 
-    public void Interact()
+    public int Interact()
     {
         Debug.Log(this.name + " is being interacted with");
         if (alternateSprite != null)
@@ -28,6 +29,8 @@ public class Interactable : MonoBehaviour
         {
             spriteRenderer.color = alternateColor;
         }
+
+        return interactionTime;
     }
 
     public void StopInteract()
