@@ -18,10 +18,14 @@ public class DudeController : MonoBehaviour
 
     [Header("State")]
     private bool isGoingRight;
+    private Interactable currentInteractable;
+    private float resumeTime;
     private Vector3 movement;
     private float currentSpeed;
     private float nextDecisionTime;
     public bool isAlive;
+
+
 
 
     // Start is called before the first frame update
@@ -37,7 +41,17 @@ public class DudeController : MonoBehaviour
 
     void Update()
     {
-        if (Time.time > nextDecisionTime)
+
+        if (currentInteractable != null)
+        {
+            if (Time.time > resumeTime)
+            {
+                currentInteractable.StopInteract();
+                currentInteractable = null;
+            }
+        }
+
+        if (Time.time > nextDecisionTime && currentInteractable == null)
         {
             nextDecisionTime = Time.time + timeBetweenDecisions;
             if (Random.Range(0f, 1f) > randomChanceChangeDirection)
@@ -86,6 +100,11 @@ public class DudeController : MonoBehaviour
             }
         }
 
+        if (currentInteractable != null)
+        {
+            currentSpeed = 0;
+        }
+
         movement = new Vector3(currentSpeed, -gravity, 0f);
 
         rb.MovePosition(transform.position + movement * Time.fixedDeltaTime);
@@ -99,4 +118,13 @@ public class DudeController : MonoBehaviour
         Debug.Log("Oh no something killed me!");
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Interactable>())
+        {
+            currentInteractable = other.gameObject.GetComponent<Interactable>();
+            int interactionTime = currentInteractable.Interact();
+            resumeTime = Time.time + interactionTime;
+        }
+    }
 }
