@@ -43,7 +43,12 @@ public class UIManager : MonoBehaviour
         ShowElements(inGameObjects);
 
         SceneManager.LoadScene("GameScene", LoadSceneMode.Additive);
-        // Load game
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.UnloadSceneAsync("GameScene");
+        StartGame();
     }
 
     public void GameOver()
