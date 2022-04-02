@@ -17,10 +17,11 @@ public class DudeController : MonoBehaviour
     [SerializeField] private float randomChanceChangeDirection;
 
     [Header("State")]
-    public bool isGoingRight;
-    public Vector3 movement;
-    public float currentSpeed;
-    public float nextDecisionTime;
+    private bool isGoingRight;
+    private Vector3 movement;
+    private float currentSpeed;
+    private float nextDecisionTime;
+    public bool isAlive;
 
 
     // Start is called before the first frame update
@@ -30,19 +31,19 @@ public class DudeController : MonoBehaviour
         currentSpeed = 0f;
         rb = GetComponent<Rigidbody2D>();
         nextDecisionTime = Time.time + timeBetweenDecisions;
-        
+        isAlive = true;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Time.time > nextDecisionTime)
+        if (Time.time > nextDecisionTime)
         {
-            nextDecisionTime = Time.time  + timeBetweenDecisions;
-            if(Random.Range(0f, 1f) > randomChanceChangeDirection)
+            nextDecisionTime = Time.time + timeBetweenDecisions;
+            if (Random.Range(0f, 1f) > randomChanceChangeDirection)
             {
                 bool newdirection = utils.randomBoolean();
-                if(newdirection != isGoingRight)
+                if (newdirection != isGoingRight)
                 {
                     Debug.Log("Changing direction");
                 }
@@ -55,6 +56,11 @@ public class DudeController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isAlive)
+        {
+            return;
+        }
+
         if (isGoingRight)
         {
             if (currentSpeed < topSpeed)
@@ -65,12 +71,12 @@ public class DudeController : MonoBehaviour
             {
                 currentSpeed = currentSpeed - deceleration * Time.fixedDeltaTime;
             }
-            
-            
+
+
         }
         else if (!isGoingRight)
         {
-            if(currentSpeed > -topSpeed)
+            if (currentSpeed > -topSpeed)
             {
                 currentSpeed = currentSpeed - acceleration * Time.fixedDeltaTime;
             }
@@ -79,11 +85,18 @@ public class DudeController : MonoBehaviour
                 currentSpeed = currentSpeed + deceleration * Time.fixedDeltaTime;
             }
         }
-        
+
         movement = new Vector3(currentSpeed, -gravity, 0f);
 
         rb.MovePosition(transform.position + movement * Time.fixedDeltaTime);
     }
+
+
+
+    public void Kill()
+    {
+        isAlive = false;
+        Debug.Log("Oh no something killed me!");
+    }
+
 }
-
-
