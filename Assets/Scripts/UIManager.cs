@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
         HideElements(inGameObjects);
         ShowElements(mainMenuObjects);
     }
-    
+
 
 
     // ----- BUTTON CALLBACKS ----- //
@@ -69,9 +69,9 @@ public class UIManager : MonoBehaviour
 
     public void Pause(InputAction.CallbackContext obj)
     {
-        if(obj.performed)
-        {    
-            if(!isPaused)
+        if (obj.performed)
+        {
+            if (!isPaused)
             {
                 Time.timeScale = 0;
                 ShowElements(pauseObjects);
@@ -95,15 +95,17 @@ public class UIManager : MonoBehaviour
 
     private void HideElements(GameObject[] objects)
     {
-		foreach(GameObject obj in objects){
-			obj.SetActive(false);
-		}
+        foreach (GameObject obj in objects)
+        {
+            obj.SetActive(false);
+        }
     }
 
     private void ShowElements(GameObject[] objects)
     {
-		foreach(GameObject obj in objects){
-			obj.SetActive(true);
-		}
+        foreach (GameObject obj in objects)
+        {
+            obj.SetActive(true);
+        }
     }
 }
