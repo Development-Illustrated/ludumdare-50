@@ -5,9 +5,19 @@ using UnityEngine;
 public class Hazzard : MonoBehaviour
 {
 
-    private void OnCollisionEnter2D(Collision2D other)
+    [SerializeField] public bool killsPlayer;
+    [SerializeField] public GameObject ogGraphic;
+    [SerializeField] public GameObject changedGraphic;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision detected on " + this.name);
-        other.gameObject.SendMessage("Kill", null, SendMessageOptions.DontRequireReceiver);
+        Debug.Log(this.name + " triggerEnterHit");
+        ogGraphic.SetActive(false);
+        changedGraphic.SetActive(true);
+        if (killsPlayer)
+        {
+            other.gameObject.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
+        }
+
     }
 }

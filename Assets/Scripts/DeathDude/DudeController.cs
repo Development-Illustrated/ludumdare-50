@@ -99,6 +99,5 @@ public class DudeController : MonoBehaviour
         isAlive = false;
         Debug.Log("Oh no something killed me!");
     }
+
 }
-
-
