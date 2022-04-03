@@ -258,6 +258,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6638905826456419243, guid: 66e9090f6543d13498506963d9465ba5, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638905826456419243, guid: 66e9090f6543d13498506963d9465ba5, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054292906706329120, guid: 66e9090f6543d13498506963d9465ba5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.81
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -2695619058785784247, guid: 66e9090f6543d13498506963d9465ba5, type: 3}
 --- !u!1 &660664078
@@ -447,9 +459,9 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   m_ShapePathHash: 0
-  m_Mesh: {fileID: 1441852163}
-  m_InstanceId: -10464
---- !u!43 &1441852163
+  m_Mesh: {fileID: 1160071311}
+  m_InstanceId: 30580
+--- !u!43 &1160071311
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
