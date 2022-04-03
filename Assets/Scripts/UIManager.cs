@@ -6,7 +6,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject[] gameOverObjects;
     [SerializeField] GameObject[] pauseObjects;
     [SerializeField] GameObject[] mainMenuObjects;
-    [SerializeField] GameObject[] inGameObjects;
 
     void Start()
     {
@@ -14,7 +13,6 @@ public class UIManager : MonoBehaviour
 
         HideElements(gameOverObjects);
         HideElements(pauseObjects);
-        HideElements(inGameObjects);
         ShowElements(mainMenuObjects);
     }
 
@@ -29,14 +27,12 @@ public class UIManager : MonoBehaviour
         HideElements(mainMenuObjects);
         HideElements(pauseObjects);
         HideElements(gameOverObjects);
-        ShowElements(inGameObjects);
 
         GameManager.Instance.ChangeState(GameManager.GameState.Play);
     }
 
     public void RestartGame()
     {
-        CountManager.Instance.clearCounts();
         if (GameManager.Instance.currentState == GameManager.GameState.Pause)
             GameManager.Instance.RestartState();
         else
@@ -50,16 +46,13 @@ public class UIManager : MonoBehaviour
     {
         ShowElements(gameOverObjects);
         HideElements(pauseObjects);
-        HideElements(inGameObjects);
     }
 
     public void QuitLevel()
     {
         GameManager.Instance.ChangeState(GameManager.GameState.Menu);
-        CountManager.Instance.clearCounts();
         HideElements(gameOverObjects);
         HideElements(pauseObjects);
-        HideElements(inGameObjects);
 
         ShowElements(mainMenuObjects);
     }
@@ -72,12 +65,10 @@ public class UIManager : MonoBehaviour
             if (GameManager.Instance.currentState == GameManager.GameState.Play)
             {
                 ShowElements(pauseObjects);
-                HideElements(inGameObjects);
             }
             else if (GameManager.Instance.currentState == GameManager.GameState.Pause)
             {
                 HideElements(pauseObjects);
-                ShowElements(inGameObjects);
             }
             GameManager.Instance.TogglePause();
         }

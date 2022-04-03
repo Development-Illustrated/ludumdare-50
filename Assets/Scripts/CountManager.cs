@@ -3,14 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CountManager : Singleton<CountManager>
+public class CountManager : MonoBehaviour
 {
+    public static CountManager Instance;
+
+    private void Awake()
+    {
+        if (CountManager.Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
     public enum CountType
     {
         Population,
         Hazard,
         Death
     }
+
 
     [SerializeField]
     public GameObject hazardCounter;
@@ -26,6 +39,8 @@ public class CountManager : Singleton<CountManager>
     public int hazardCount;
     public int populationCount;
     public int deadCount;
+
+
 
     void Start()
     {
@@ -44,6 +59,7 @@ public class CountManager : Singleton<CountManager>
 
     public void incrementCount(CountType type)
     {
+        Debug.Log("Count manager incrementing count: " + type);
         switch (type)
         {
             case CountType.Hazard:
@@ -59,6 +75,13 @@ public class CountManager : Singleton<CountManager>
                 updateText(deadTxt, "Dead: " + deadCount);
                 break;
         }
+
+
+        if (deadCount > populationCount)
+        {
+            GameManager.Instance.ChangeState(GameManager.GameState.Lose);
+        }
+
     }
 
     public void decrementCount(CountType type)
