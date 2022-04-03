@@ -55,7 +55,5 @@ MonoBehaviour:
   - {r: 0.7372549, g: 0.56078434, b: 0.56078434, a: 1}
   m_CustomObjectTypes: []
   m_PrefabReplacements:
-  - m_TypeName: Interactable
-    m_Prefab: {fileID: 4430718778014686253, guid: e54f8bdbc37a249a1afb5e462e2af20b, type: 3}
-  - m_TypeName: SpawnPoint
-    m_Prefab: {fileID: 6206121150692373433, guid: 6b2e211f676274be5bf04db51ad6d842, type: 3}
+  - m_TypeName: Door
+    m_Prefab: {fileID: 3768949413734166774, guid: 1dcf40f72fb824d8980b0db8bc2d996e, type: 3}
