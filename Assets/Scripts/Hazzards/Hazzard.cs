@@ -6,13 +6,18 @@ public class Hazzard : MonoBehaviour
 {
 
     [SerializeField] public bool killsPlayer;
+    [SerializeField] public bool killSelfOnClear;
     [SerializeField] ParticleSystem effectPs;
     [SerializeField] ParticleSystem ongoingPs;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(this.name + " triggerEnterHit");
-        effectPs.Play();
+        if (effectPs != null)
+        {
+            effectPs.Play();
+        }
+
 
         if (killsPlayer)
         {
@@ -24,15 +29,27 @@ public class Hazzard : MonoBehaviour
     public void ClearHazzard()
     {
         Debug.Log("Clearing Hazzard: " + this.name);
+        if (killSelfOnClear)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 
     private void OnEnable()
     {
-        ongoingPs.Play();
+        if (ongoingPs != null)
+        {
+            ongoingPs.Play();
+        }
     }
 
     private void OnDisable()
     {
-        ongoingPs.Stop();
+        if (ongoingPs != null)
+        {
+            ongoingPs.Stop();
+        }
+
     }
 }
