@@ -51,7 +51,8 @@ public class Interactable : MonoBehaviour
     {
         Debug.Log("Started interacting with " + this.name);
         timeUntilStartInteraction = Time.time + waitBeforeInteraction;
-        if (decayScript) {
+        if (decayScript)
+        {
             decayScript.OnUse();
         }
         return interactionTime;
