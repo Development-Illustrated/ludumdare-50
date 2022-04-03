@@ -43,11 +43,16 @@ public class DudeController : MonoBehaviour
             // Woops
         }
 
+
+        rb = GetComponent<Rigidbody2D>();
+        isAlive = true;
+    }
+
+    private void OnEnable()
+    {
         isGoingRight = utils.randomBoolean();
         currentSpeed = 0f;
-        rb = GetComponent<Rigidbody2D>();
         nextDecisionTime = Time.time + timeBetweenDecisions;
-        isAlive = true;
     }
 
     void Update()
@@ -157,8 +162,12 @@ public class DudeController : MonoBehaviour
         if (other.gameObject.GetComponent<Interactable>())
         {
             currentInteractable = other.gameObject.GetComponent<Interactable>();
-            int interactionTime = currentInteractable.Interact();
+            int interactionTime = currentInteractable.Interact(this.gameObject);
             resumeTime = Time.time + interactionTime;
+        }
+        if (other.gameObject.GetComponent<Lift>())
+        {
+            other.gameObject.GetComponent<Lift>().EnterLift(this.gameObject);
         }
     }
 }

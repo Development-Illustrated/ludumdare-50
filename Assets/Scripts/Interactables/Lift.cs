@@ -7,23 +7,80 @@ public class Lift : MonoBehaviour
 
     LiftManager liftManager;
     [SerializeField] public int liftIndex;
-    [SerializeField] public List<Transform> exitPositions;
+    [SerializeField] public Transform spawnPoint;
+    [SerializeField] float liftCooldownTime;
+    [SerializeField] float liftTravelCooldownTime;
+
+    [SerializeField] Sprite closedDoors;
+    [SerializeField] Sprite openDoors;
+    private SpriteRenderer spriteRenderer;
+    private BoxCollider2D coll;
+    private float liftAvailableTime;
+    private float liftTravelTime;
+    public bool liftAvailable;
+
+    private GameObject currentOccupant;
+    private Lift destinationLift;
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        coll = GetComponent<BoxCollider2D>();
+        liftAvailableTime = Time.time;
         liftManager = transform.parent.GetComponent<LiftManager>();
         liftIndex = transform.GetSiblingIndex();
+        spawnPoint = transform.Find("SpawnPoint");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        Debug.Log("Lift has been triggered by " + other.gameObject.name);
-        liftManager.EnterLift(liftIndex, other.gameObject);
+
+        if (Time.time > liftTravelTime && liftAvailable == false)
+        {
+            if (currentOccupant)
+            {
+                currentOccupant.transform.position = destinationLift.GetExitPosition();
+                currentOccupant.SetActive(true);
+                currentOccupant = null;
+            }
+            spriteRenderer.sprite = openDoors;
+
+        }
+        if (liftAvailable == false && Time.time > liftAvailableTime)
+        {
+            liftAvailable = true;
+            coll.enabled = true;
+        }
+    }
+
+    public float EnterLift(GameObject occupant)
+    {
+        currentOccupant = occupant;
+        SetUnavailable();
+        currentOccupant.SetActive(false);
+        destinationLift = liftManager.GetAvailableLift(this);
+        destinationLift.SetAsDestination();
+        liftTravelTime = Time.time + liftTravelCooldownTime;
+        return liftCooldownTime;
+    }
+
+    public void SetAsDestination()
+    {
+        SetUnavailable();
+    }
+
+    public void SetUnavailable()
+    {
+        liftAvailable = false;
+        liftAvailableTime = Time.time + liftCooldownTime;
+        liftTravelTime = Time.time + liftTravelCooldownTime;
+        coll.enabled = false;
+        spriteRenderer.sprite = closedDoors;
     }
 
     public Vector3 GetExitPosition()
     {
-        return exitPositions[Random.Range(0, exitPositions.Count)].position;
+        return spawnPoint.position;
     }
 }

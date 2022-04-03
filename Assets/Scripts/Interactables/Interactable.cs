@@ -22,7 +22,7 @@ public class Interactable : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         originalSprite = spriteRenderer.sprite;
-        decayScript = this.gameObject.GetComponent<Decay>();
+        decayScript = GetComponent<Decay>();
     }
 
     void Update()
@@ -47,7 +47,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public int Interact()
+    public int Interact(GameObject obj = null)
     {
         Debug.Log("Started interacting with " + this.name);
         timeUntilStartInteraction = Time.time + waitBeforeInteraction;
