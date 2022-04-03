@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     if (currentHazzard)
     {
       currentHazzard.SendMessage("ClearHazzard", null);
+      yoMessage.gameObject.SetActive(false);
     }
   }
 
@@ -100,25 +101,24 @@ public class PlayerController : MonoBehaviour
 
   private void UpdateAnimator()
   {
-    float fuck = Mathf.Abs(rb.velocity.x);
-    prevMaxSpeed = fuck;
+    float AHHHH = Mathf.Abs(rb.velocity.x);
+    prevMaxSpeed = AHHHH;
 
-    if (fuck > 0 && fuck < 5)
+    if (AHHHH > 0 && AHHHH < 5)
     {
       animator.SetBool("isIdle", false);
       animator.SetBool("isAccelerating", true);
     }
 
-    if (fuck > 5)
+    if (AHHHH > 5)
     {
       animator.SetBool("isAccelerating", false);
       animator.SetBool("isMaxSpeed", true);
     }
 
-    if (fuck < 1)
+    if (AHHHH < 1)
     {
       animator.SetBool("isAccelerating", false);
-      // animator.SetBool("isDecelerating", false);
       animator.SetBool("isMaxSpeed", false);
       animator.SetBool("isIdle", true);
     }
