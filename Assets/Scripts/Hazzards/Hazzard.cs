@@ -9,6 +9,16 @@ public class Hazzard : MonoBehaviour
     [SerializeField] public GameObject ogGraphic;
     [SerializeField] public GameObject changedGraphic;
 
+    public void OnEnable()
+    {
+        HazardManager.Instance.incrementHazardCount();
+    }
+
+    public void OnDisable()
+    {
+        HazardManager.Instance.decrementHazardCount();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(this.name + " triggerEnterHit");
