@@ -8,6 +8,7 @@ TagManager:
   - ShowOnGameOver
   - ShowOnGamePause
   - ShowInGame
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -48,11 +49,14 @@ TagManager:
   - name: BG
     uniqueID: 615887163
     locked: 0
-  - name: Wall
-    uniqueID: 459342063
-    locked: 0
   - name: Background
     uniqueID: 2844489391
+    locked: 0
+  - name: Floor
+    uniqueID: 3299465207
+    locked: 0
+  - name: Wall
+    uniqueID: 459342063
     locked: 0
   - name: Foreground
     uniqueID: 2138936335

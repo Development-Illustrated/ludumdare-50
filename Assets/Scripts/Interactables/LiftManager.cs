@@ -5,25 +5,31 @@ using UnityEngine;
 
 public class LiftManager : MonoBehaviour
 {
-    [SerializeField] List<Lift> allLifts;
+  [SerializeField] List<Lift> allLifts;
 
-    public Lift GetAvailableLift(Lift lift)
+  public Lift GetAvailableLift(Lift lift)
+  {
+    foreach (Lift l in allLifts)
     {
-        foreach (Lift l in allLifts)
-        {
-            if (l.liftAvailable)
-            {
-                return l;
-            }
-        }
-        return lift;
+      if (l.liftAvailable)
+      {
+        return l;
+      }
+    }
+    return lift;
+  }
+
+  void Start()
+  {
+    allLifts = new List<Lift>();
+
+    Lift[] lifts = transform.GetComponentsInChildren<Lift>();
+
+    for (int i = 1; i < lifts.Length; i++)
+    {
+      allLifts.Add(lifts[i]);
     }
 
-    void Start()
-    {
-        // Populate known lifts
-        allLifts = new List<Lift>();
-        allLifts.AddRange(transform.GetComponentsInChildren<Lift>());
-    }
+  }
 
 }

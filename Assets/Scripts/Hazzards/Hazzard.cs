@@ -5,79 +5,84 @@ using UnityEngine;
 public class Hazzard : MonoBehaviour
 {
 
-    [SerializeField] public bool killsPlayer;
-    [SerializeField] public bool killSelfOnClear;
-    [SerializeField] ParticleSystem effectPs;
-    [SerializeField] ParticleSystem ongoingPs;
-    private Decay decayScript;
+  [SerializeField] public bool killsPlayer;
+  [SerializeField] public bool killSelfOnClear;
+  [SerializeField] ParticleSystem effectPs;
+  [SerializeField] ParticleSystem ongoingPs;
+  private Decay decayScript;
 
-    void Start()
+  void Start()
+  {
+    decayScript = this.gameObject.GetComponent<Decay>();
+  }
+
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+    if (this.enabled)
     {
-        decayScript = this.gameObject.GetComponent<Decay>();
+      Debug.Log(this.name + " triggerEnterHit");
+      if (effectPs != null)
+      {
+        effectPs.Play();
+      }
+
+      Debug.Log("YO WE HERE BITCH BOI");
+      if (killsPlayer)
+      {
+        other.gameObject.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
+      }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+  }
+
+  public void ClearHazzard()
+  {
+    Debug.Log("Clearing Hazzard: " + this.name);
+    if (killSelfOnClear)
     {
-        Debug.Log(this.name + " triggerEnterHit");
-        if (effectPs != null)
-        {
-            effectPs.Play();
-        }
-
-
-        if (killsPlayer)
-        {
-            other.gameObject.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
-        }
-
+      Destroy(this.gameObject);
+    }
+    else if (decayScript)
+    {
+      decayScript.FixHazard();
     }
 
-    public void ClearHazzard()
-    {
-        Debug.Log("Clearing Hazzard: " + this.name);
-        if (killSelfOnClear)
-        {
-            Destroy(this.gameObject);
-        } else if(decayScript) {
-            decayScript.FixHazard();
-        }
+  }
 
+  private void OnEnable()
+  {
+    if (ongoingPs != null)
+    {
+      ongoingPs.Play();
+    }
+    try
+    {
+      CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
+    }
+    catch (System.NullReferenceException)
+    {
+
+      // Woops
     }
 
-    private void OnEnable()
+  }
+
+  private void OnDisable()
+  {
+    if (ongoingPs != null)
     {
-        if (ongoingPs != null)
-        {
-            ongoingPs.Play();
-        }
-        try
-        {
-            CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
-        }
-        catch (System.NullReferenceException)
-        {
-
-            // Woops
-        }
-
+      ongoingPs.Stop();
     }
 
-    private void OnDisable()
+    try
     {
-        if (ongoingPs != null)
-        {
-            ongoingPs.Stop();
-        }
-
-        try
-        {
-            CountManager.Instance.decrementCount(CountManager.CountType.Hazard);
-        }
-        catch (System.NullReferenceException)
-        {
-            // woops
-        }
-
-
+      CountManager.Instance.decrementCount(CountManager.CountType.Hazard);
     }
+    catch (System.NullReferenceException)
+    {
+      // woops
+    }
+
+
+  }
 }
