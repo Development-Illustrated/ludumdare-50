@@ -31,6 +31,7 @@ public class DudeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CountManager.Instance.incrementCount(CountManager.CountType.Population);
         isGoingRight = utils.randomBoolean();
         currentSpeed = 0f;
         rb = GetComponent<Rigidbody2D>();
@@ -114,6 +115,7 @@ public class DudeController : MonoBehaviour
     public void Kill()
     {
         isAlive = false;
+        CountManager.Instance.decrementCount(CountManager.CountType.Population);
         Debug.Log("Oh no something killed me!");
     }
 

@@ -11,12 +11,12 @@ public class Hazzard : MonoBehaviour
 
     public void OnEnable()
     {
-        HazardManager.Instance.incrementHazardCount();
+        CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
     }
 
     public void OnDisable()
     {
-        HazardManager.Instance.decrementHazardCount();
+        CountManager.Instance.decrementCount(CountManager.CountType.Hazard);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
