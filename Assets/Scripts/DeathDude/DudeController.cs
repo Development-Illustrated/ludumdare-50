@@ -32,7 +32,7 @@ public class DudeController : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        dudeNumber = Random.Range(1, 6);
+        dudeNumber = Random.Range(1, 5);
     }
 
     // Start is called before the first frame update
@@ -153,7 +153,7 @@ public class DudeController : MonoBehaviour
         CountManager.Instance.decrementCount(CountManager.CountType.Population);
         CountManager.Instance.incrementCount(CountManager.CountType.Death);
         Debug.Log("Oh no something killed me!");
-        Destroy(this.gameObject);
+        anim.SetBool("IsDeading", true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
