@@ -9,6 +9,12 @@ public class Hazzard : MonoBehaviour
     [SerializeField] public bool killSelfOnClear;
     [SerializeField] ParticleSystem effectPs;
     [SerializeField] ParticleSystem ongoingPs;
+    private Decay decayScript;
+
+    void Start()
+    {
+        decayScript = this.gameObject.GetComponent<Decay>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -32,6 +38,8 @@ public class Hazzard : MonoBehaviour
         if (killSelfOnClear)
         {
             Destroy(this.gameObject);
+        } else if(decayScript) {
+            decayScript.FixHazard();
         }
 
     }
