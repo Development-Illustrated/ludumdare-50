@@ -9,8 +9,14 @@ public class Lift : MonoBehaviour
     [SerializeField] public int liftIndex;
     [SerializeField] public Transform spawnPoint;
     [SerializeField] float liftCooldownTime;
+    [SerializeField] float liftTravelCooldownTime;
+
+    [SerializeField] Sprite closedDoors;
+    [SerializeField] Sprite openDoors;
+    private SpriteRenderer spriteRenderer;
     private BoxCollider2D coll;
     private float liftAvailableTime;
+    private float liftTravelTime;
     public bool liftAvailable;
 
     private GameObject currentOccupant;
@@ -19,6 +25,7 @@ public class Lift : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
         liftAvailableTime = Time.time;
         liftManager = transform.parent.GetComponent<LiftManager>();
@@ -28,7 +35,8 @@ public class Lift : MonoBehaviour
 
     private void Update()
     {
-        if (liftAvailable == false)
+
+        if (Time.time > liftTravelTime && liftAvailable == false)
         {
             if (currentOccupant)
             {
@@ -36,21 +44,25 @@ public class Lift : MonoBehaviour
                 currentOccupant.SetActive(true);
                 currentOccupant = null;
             }
-            if (Time.time > liftAvailableTime)
-            {
-                liftAvailable = true;
-                coll.enabled = true;
-            }
+            spriteRenderer.sprite = openDoors;
+
+        }
+        if (liftAvailable == false && Time.time > liftAvailableTime)
+        {
+            liftAvailable = true;
+            coll.enabled = true;
         }
     }
 
-    public void EnterLift(GameObject occupant)
+    public float EnterLift(GameObject occupant)
     {
         currentOccupant = occupant;
         SetUnavailable();
         currentOccupant.SetActive(false);
         destinationLift = liftManager.GetAvailableLift(this);
         destinationLift.SetAsDestination();
+        liftTravelTime = Time.time + liftTravelCooldownTime;
+        return liftCooldownTime;
     }
 
     public void SetAsDestination()
@@ -62,7 +74,9 @@ public class Lift : MonoBehaviour
     {
         liftAvailable = false;
         liftAvailableTime = Time.time + liftCooldownTime;
+        liftTravelTime = Time.time + liftTravelCooldownTime;
         coll.enabled = false;
+        spriteRenderer.sprite = closedDoors;
     }
 
     public Vector3 GetExitPosition()

@@ -17,14 +17,12 @@ public class Interactable : MonoBehaviour
     private float timeUntilStopInteraction = 0f;
 
     private Decay decayScript;
-    private Lift liftScript;
     void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         originalSprite = spriteRenderer.sprite;
         decayScript = GetComponent<Decay>();
-        liftScript = GetComponent<Lift>();
     }
 
     void Update()
@@ -56,10 +54,6 @@ public class Interactable : MonoBehaviour
         if (decayScript)
         {
             decayScript.OnUse();
-        }
-        if (liftScript)
-        {
-            liftScript.EnterLift(obj);
         }
         return interactionTime;
     }
