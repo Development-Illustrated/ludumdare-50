@@ -36,7 +36,6 @@ public class DudeController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         nextDecisionTime = Time.time + timeBetweenDecisions;
         isAlive = true;
-
     }
 
     void Update()
