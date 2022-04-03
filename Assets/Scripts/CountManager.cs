@@ -8,29 +8,38 @@ public class CountManager : Singleton<CountManager>
     public enum CountType
     {
         Population,
-        Hazard
+        Hazard,
+        Death
     }
 
     [SerializeField]
     public GameObject hazardCounter;
     [SerializeField]
     public GameObject populationCounter;
+    [SerializeField]
+    public GameObject deadCounter;
 
     private Text hazardTxt;
     private Text populationTxt;
+    private Text deadTxt;
 
     public int hazardCount;
     public int populationCount;
+    public int deadCount;
 
     void Start()
     {
         hazardCount = 0;
         populationCount = 0;
+        deadCount = 0;
         if (hazardCounter)
             hazardTxt = hazardCounter.GetComponent<Text>();
 
         if (populationCounter)
             populationTxt = populationCounter.GetComponent<Text>();
+
+        if (deadCounter)
+            deadTxt = deadCounter.GetComponent<Text>();
     }
 
     public void incrementCount(CountType type)
@@ -44,6 +53,10 @@ public class CountManager : Singleton<CountManager>
             case CountType.Population:
                 populationCount += 1;
                 updateText(populationTxt, "Population: " + populationCount);
+                break;
+            case CountType.Death:
+                deadCount += 1;
+                updateText(deadTxt, "Dead: " + deadCount);
                 break;
         }
     }
@@ -67,5 +80,12 @@ public class CountManager : Singleton<CountManager>
     {
         if (field != null)
             field.text = text;
+    }
+
+    public void clearCounts()
+    {
+        hazardCount = 0;
+        populationCount = 0;
+        deadCount = 0;
     }
 }

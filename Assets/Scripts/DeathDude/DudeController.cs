@@ -148,6 +148,7 @@ public class DudeController : MonoBehaviour
     {
         isAlive = false;
         CountManager.Instance.decrementCount(CountManager.CountType.Population);
+        CountManager.Instance.incrementCount(CountManager.CountType.Death);
         Debug.Log("Oh no something killed me!");
     }
 

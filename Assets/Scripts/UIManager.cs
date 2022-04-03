@@ -18,6 +18,12 @@ public class UIManager : MonoBehaviour
         ShowElements(mainMenuObjects);
     }
 
+    void Update()
+    {
+        if (GameManager.Instance.currentState == GameManager.GameState.Lose)
+            GameOver();
+    }
+
     public void StartGame()
     {
         HideElements(mainMenuObjects);
@@ -30,6 +36,7 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
+        CountManager.Instance.clearCounts();
         if (GameManager.Instance.currentState == GameManager.GameState.Pause)
             GameManager.Instance.RestartState();
         else
@@ -42,15 +49,17 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         ShowElements(gameOverObjects);
+        HideElements(pauseObjects);
         HideElements(inGameObjects);
     }
 
     public void QuitLevel()
     {
+        GameManager.Instance.ChangeState(GameManager.GameState.Menu);
+        CountManager.Instance.clearCounts();
         HideElements(gameOverObjects);
         HideElements(pauseObjects);
         HideElements(inGameObjects);
-        GameManager.Instance.ChangeState(GameManager.GameState.Menu);
 
         ShowElements(mainMenuObjects);
     }

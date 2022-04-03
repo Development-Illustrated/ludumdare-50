@@ -26,7 +26,9 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-
+        if (CountManager.Instance.deadCount > CountManager.Instance.populationCount) {
+            ChangeState(GameState.Lose);
+        }
     }
 
     public void TogglePause()
@@ -48,30 +50,23 @@ public class GameManager : Singleton<GameManager>
         if (currentState == GameManager.GameState.Menu & newState == GameState.Play)
         {
             SceneManager.LoadScene(gameSceneName, LoadSceneMode.Additive);
-            currentState = newState;
         }
         else if (newState == GameState.Menu)
         {
             Time.timeScale = 1;
             GL.Clear(true, true, Color.black, 1f);
             SceneManager.UnloadSceneAsync(gameSceneName);
-            currentState = newState;
-
-
         }
         else if (currentState == GameState.Play & newState == GameState.Pause)
         {
             Time.timeScale = 0;
-            currentState = newState;
         }
         else if (currentState == GameState.Pause & newState == GameState.Play)
         {
             Time.timeScale = 1;
-            currentState = newState;
         }
 
-
-
+        currentState = newState;
     }
 
     public void RestartState()
