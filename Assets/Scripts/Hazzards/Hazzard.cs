@@ -10,16 +10,6 @@ public class Hazzard : MonoBehaviour
     [SerializeField] ParticleSystem effectPs;
     [SerializeField] ParticleSystem ongoingPs;
 
-    public void OnEnable()
-    {
-        CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
-    }
-
-    public void OnDisable()
-    {
-        CountManager.Instance.decrementCount(CountManager.CountType.Hazard);
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(this.name + " triggerEnterHit");
@@ -52,6 +42,16 @@ public class Hazzard : MonoBehaviour
         {
             ongoingPs.Play();
         }
+        try
+        {
+            CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
+        }
+        catch (System.NullReferenceException)
+        {
+
+            // Woops
+        }
+
     }
 
     private void OnDisable()
@@ -60,6 +60,16 @@ public class Hazzard : MonoBehaviour
         {
             ongoingPs.Stop();
         }
+
+        try
+        {
+            CountManager.Instance.decrementCount(CountManager.CountType.Hazard);
+        }
+        catch (System.NullReferenceException)
+        {
+            // woops
+        }
+
 
     }
 }

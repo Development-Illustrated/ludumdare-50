@@ -31,7 +31,15 @@ public class DudeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CountManager.Instance.incrementCount(CountManager.CountType.Population);
+        try
+        {
+            CountManager.Instance.incrementCount(CountManager.CountType.Population);
+        }
+        catch (System.NullReferenceException)
+        {
+            // Woops
+        }
+
         isGoingRight = utils.randomBoolean();
         currentSpeed = 0f;
         rb = GetComponent<Rigidbody2D>();
