@@ -1,53 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
-    public InputAction playerInputs;
     [SerializeField] GameObject[] gameOverObjects;
     [SerializeField] GameObject[] pauseObjects;
     [SerializeField] GameObject[] mainMenuObjects;
     [SerializeField] GameObject[] inGameObjects;
 
-
-    private bool isPaused;
-
-    private void Awake()
-    {
-        playerInputs = new InputAction();
-    }
-
     void Start()
     {
-        isPaused = false;
-        Time.timeScale = 1;
+        Debug.Log("UI manager starting");
+
         HideElements(gameOverObjects);
         HideElements(pauseObjects);
         HideElements(inGameObjects);
         ShowElements(mainMenuObjects);
     }
 
-
-
-    // ----- BUTTON CALLBACKS ----- //
     public void StartGame()
     {
-        isPaused = false;
-        Time.timeScale = 1;
         HideElements(mainMenuObjects);
         HideElements(pauseObjects);
         HideElements(gameOverObjects);
         ShowElements(inGameObjects);
 
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Additive);
+        GameManager.Instance.ChangeState(GameManager.GameState.Play);
     }
 
     public void RestartGame()
     {
-        SceneManager.UnloadSceneAsync("GameScene");
+        if (GameManager.Instance.currentState == GameManager.GameState.Pause)
+            GameManager.Instance.RestartState();
+        else
+        {
+            GameManager.Instance.ChangeState(GameManager.GameState.Play);
+        }
         StartGame();
     }
 
@@ -62,29 +50,27 @@ public class UIManager : MonoBehaviour
         HideElements(gameOverObjects);
         HideElements(pauseObjects);
         HideElements(inGameObjects);
-        SceneManager.UnloadSceneAsync("GameScene");
+        GameManager.Instance.ChangeState(GameManager.GameState.Menu);
 
         ShowElements(mainMenuObjects);
     }
 
     public void Pause(InputAction.CallbackContext obj)
     {
+        Debug.Log("Ui manager: Pause Callback recieved");
         if (obj.performed)
         {
-            if (!isPaused)
+            if (GameManager.Instance.currentState == GameManager.GameState.Play)
             {
-                Time.timeScale = 0;
                 ShowElements(pauseObjects);
                 HideElements(inGameObjects);
-                isPaused = true;
             }
-            else
+            else if (GameManager.Instance.currentState == GameManager.GameState.Pause)
             {
-                Time.timeScale = 1;
                 HideElements(pauseObjects);
                 ShowElements(inGameObjects);
-                isPaused = false;
             }
+            GameManager.Instance.TogglePause();
         }
     }
 

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Artwork/Doors.aseprite.meta
 guid: 194c975d0e71f44fc9950011cd88a131
+========
+guid: 53cf2789a73db4272a81cbc8a7b70cd9
+>>>>>>>> 13c9ff0 (👻🎉 Movement + Anims):Assets/Artwork/Ghost Boy.aseprite.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
