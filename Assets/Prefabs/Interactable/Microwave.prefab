@@ -4911,8 +4911,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   killsPlayer: 1
   killSelfOnClear: 0
-  effectPs: {fileID: 4410932255031875367}
-  ongoingPs: {fileID: 0}
+  effectPs: {fileID: 0}
+  ongoingPs: {fileID: 4410932255031875367}
 --- !u!1 &3628313636491399439
 GameObject:
   m_ObjectHideFlags: 0

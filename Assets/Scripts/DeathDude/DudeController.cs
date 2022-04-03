@@ -148,6 +148,7 @@ public class DudeController : MonoBehaviour
         CountManager.Instance.decrementCount(CountManager.CountType.Population);
         CountManager.Instance.incrementCount(CountManager.CountType.Death);
         Debug.Log("Oh no something killed me!");
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
