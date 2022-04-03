@@ -1723,6 +1723,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathDude
       objectReference: {fileID: 0}
+    - target: {fileID: 5160140222139861965, guid: 02dbd6eab6f56495e924df1e980ec8eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02dbd6eab6f56495e924df1e980ec8eb, type: 3}
 --- !u!1 &2113640078
@@ -4208,7 +4212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1869925557689530682, guid: 329e9049a1cc54bc38ae4933c188388e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.51
+      value: -6.37
       objectReference: {fileID: 0}
     - target: {fileID: 1869925557689530682, guid: 329e9049a1cc54bc38ae4933c188388e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4252,7 +4256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1869925557689530693, guid: 329e9049a1cc54bc38ae4933c188388e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 329e9049a1cc54bc38ae4933c188388e, type: 3}
