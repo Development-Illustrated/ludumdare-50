@@ -26,7 +26,8 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        if (CountManager.Instance.deadCount > CountManager.Instance.populationCount) {
+        if (CountManager.Instance.deadCount > CountManager.Instance.populationCount)
+        {
             ChangeState(GameState.Lose);
         }
     }
