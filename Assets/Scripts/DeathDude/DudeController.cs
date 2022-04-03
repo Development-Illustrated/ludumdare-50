@@ -26,11 +26,13 @@ public class DudeController : MonoBehaviour
     private float nextDecisionTime;
     public bool isAlive;
 
+    private int dudeNumber;
+
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        anim.SetInteger("DudeNumber", Random.Range(1, 6));
+        dudeNumber = Random.Range(1, 1);
     }
 
     // Start is called before the first frame update
@@ -46,6 +48,7 @@ public class DudeController : MonoBehaviour
         isGoingRight = utils.randomBoolean();
         currentSpeed = 0f;
         nextDecisionTime = Time.time + timeBetweenDecisions;
+        anim.SetInteger("DudeNumber", dudeNumber);
     }
 
     void Update()
@@ -57,6 +60,8 @@ public class DudeController : MonoBehaviour
             {
                 currentInteractable.StopInteract();
                 currentInteractable = null;
+                anim.SetBool("IsInteracting", false);
+                anim.SetBool("IsWalking", false);
             }
         }
 
@@ -148,6 +153,7 @@ public class DudeController : MonoBehaviour
         CountManager.Instance.decrementCount(CountManager.CountType.Population);
         CountManager.Instance.incrementCount(CountManager.CountType.Death);
         Debug.Log("Oh no something killed me!");
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -157,6 +163,8 @@ public class DudeController : MonoBehaviour
             currentInteractable = other.gameObject.GetComponent<Interactable>();
             int interactionTime = currentInteractable.Interact(this.gameObject);
             resumeTime = Time.time + interactionTime;
+            anim.SetBool("IsInteracting", true);
+            anim.SetBool("IsWalking", false);
         }
         if (other.gameObject.GetComponent<Lift>())
         {

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2618069280558755176}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.06, y: -0.21, z: 0}
+  m_LocalPosition: {x: 0.26, y: 0.09, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 3628313635245821124}
@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.35294116, g: 0.7050584, b: 0.94509804, a: 1}
+      maxColor: {r: 0.35294116, g: 0.6893458, b: 0.94509804, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4818,7 +4818,7 @@ GameObject:
   - component: {fileID: 7500778009228657373}
   - component: {fileID: 2240611349511042504}
   m_Layer: 0
-  m_Name: CopierMachine
+  m_Name: Fridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4853,7 +4853,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05208674, y: 0}
+  m_Offset: {x: 0.24449718, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4864,7 +4864,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5442408, y: 1}
+  m_Size: {x: 0.502615, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &3628313635245821125
 MonoBehaviour:
@@ -4881,7 +4881,7 @@ MonoBehaviour:
   waitBeforeInteraction: 0.5
   waitAfterInteraction: 0
   interactionTime: 3
-  alternateSprite: {fileID: -6918296231949332129, guid: 4837526b8ee66430ea28369c9a4ef26c, type: 3}
+  alternateSprite: {fileID: -2291462030592400546, guid: 8c1a94d4bdc814eecafeadfbb3aea568, type: 3}
   alternateColor: {r: 0.8679245, g: 0.13510147, b: 0.17900966, a: 1}
 --- !u!114 &7500778009228657373
 MonoBehaviour:
@@ -4913,7 +4913,7 @@ MonoBehaviour:
   killSelfOnClear: 0
   effectPs: {fileID: 0}
   ongoingPs: {fileID: 4410932255031875367}
-  interactionColor: {r: 0.5411765, g: 1, b: 0.5058824, a: 0.99215686}
+  interactionColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3628313636491399439
 GameObject:
   m_ObjectHideFlags: 0
@@ -4985,7 +4985,7 @@ SpriteRenderer:
   m_SortingLayerID: 2138936335
   m_SortingLayer: 5
   m_SortingOrder: 5
-  m_Sprite: {fileID: 1061502487494873631, guid: 4837526b8ee66430ea28369c9a4ef26c, type: 3}
+  m_Sprite: {fileID: -787681131013791189, guid: 8c1a94d4bdc814eecafeadfbb3aea568, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

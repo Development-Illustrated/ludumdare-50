@@ -4895,7 +4895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165ae3e8e4cb846cf80e94bbbebba1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decayAfterXUses: 1
+  decayAfterXUses: 3
   decayAfterXSeconds: 0
 --- !u!114 &2240611349511042504
 MonoBehaviour:
@@ -4911,8 +4911,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   killsPlayer: 1
   killSelfOnClear: 0
-  effectPs: {fileID: 4410932255031875367}
-  ongoingPs: {fileID: 0}
+  effectPs: {fileID: 0}
+  ongoingPs: {fileID: 4410932255031875367}
+  interactionColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3628313636491399439
 GameObject:
   m_ObjectHideFlags: 0

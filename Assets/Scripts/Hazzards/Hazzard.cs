@@ -9,11 +9,17 @@ public class Hazzard : MonoBehaviour
     [SerializeField] public bool killSelfOnClear;
     [SerializeField] ParticleSystem effectPs;
     [SerializeField] ParticleSystem ongoingPs;
+    [SerializeField] Color interactionColor;
+    Color ogColor;
+
+    SpriteRenderer spriteRenderer;
     private Decay decayScript;
 
     void Start()
     {
         decayScript = this.gameObject.GetComponent<Decay>();
+        spriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
+        ogColor = spriteRenderer.color;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -32,7 +38,18 @@ public class Hazzard : MonoBehaviour
                 other.gameObject.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
             }
         }
+    }
 
+    public void OutlineMe(bool doIt)
+    {
+        if (doIt)
+        {
+            spriteRenderer.color = interactionColor;
+        }
+        else
+        {
+            spriteRenderer.color = ogColor;
+        }
     }
 
     public void ClearHazzard()
@@ -46,6 +63,7 @@ public class Hazzard : MonoBehaviour
         {
             decayScript.FixHazard();
         }
+        ongoingPs.Stop();
 
     }
 
