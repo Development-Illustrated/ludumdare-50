@@ -4,42 +4,42 @@ using UnityEngine;
 
 public class DudeSpawner : MonoBehaviour
 {
-  [SerializeField]
-  List<Transform> spawnpoints;
+    [SerializeField]
+    List<Transform> spawnpoints;
 
-  [SerializeField]
-  float timeBetweenSpawns;
+    [SerializeField]
+    float timeBetweenSpawns;
 
-  [SerializeField] DudeController dudePrefab;
+    [SerializeField] DudeController dudePrefab;
 
-  float nextSpawnTime;
+    float nextSpawnTime;
 
-  private void Start()
-  {
-    GameObject[] blah = GameObject.FindGameObjectsWithTag("SpawnPoint");
-
-    foreach (GameObject obj in blah)
+    private void Start()
     {
-      spawnpoints.Add(obj.transform);
+        GameObject[] blah = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
+        foreach (GameObject obj in blah)
+        {
+            spawnpoints.Add(obj.transform);
+        }
+
+        // spawnpoints = blah.transformssss;
+
+        nextSpawnTime = Time.time + timeBetweenSpawns;
     }
 
-    // spawnpoints = blah.transformssss;
-
-    nextSpawnTime = Time.time + timeBetweenSpawns;
-  }
-
-  void SpawnDude()
-  {
-    Transform chosenSpawnPoint = spawnpoints[Random.Range(0, spawnpoints.Count)];
-    Instantiate(dudePrefab, chosenSpawnPoint.position, Quaternion.identity);
-  }
-
-  private void Update()
-  {
-    if (Time.time > nextSpawnTime)
+    void SpawnDude()
     {
-      SpawnDude();
-      nextSpawnTime = Time.time + timeBetweenSpawns;
+        Transform chosenSpawnPoint = spawnpoints[Random.Range(0, spawnpoints.Count)];
+        GameObject.Instantiate(dudePrefab, chosenSpawnPoint.position, Quaternion.identity, this.transform);
     }
-  }
+
+    private void Update()
+    {
+        if (Time.time > nextSpawnTime)
+        {
+            SpawnDude();
+            nextSpawnTime = Time.time + timeBetweenSpawns;
+        }
+    }
 }
