@@ -17,12 +17,14 @@ public class Interactable : MonoBehaviour
     private float timeUntilStopInteraction = 0f;
 
     private Decay decayScript;
+    private Lift liftScript;
     void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         originalSprite = spriteRenderer.sprite;
-        decayScript = this.gameObject.GetComponent<Decay>();
+        decayScript = GetComponent<Decay>();
+        liftScript = GetComponent<Lift>();
     }
 
     void Update()
@@ -47,13 +49,17 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public int Interact()
+    public int Interact(GameObject obj = null)
     {
         Debug.Log("Started interacting with " + this.name);
         timeUntilStartInteraction = Time.time + waitBeforeInteraction;
         if (decayScript)
         {
             decayScript.OnUse();
+        }
+        if (liftScript)
+        {
+            liftScript.EnterLift(obj);
         }
         return interactionTime;
     }

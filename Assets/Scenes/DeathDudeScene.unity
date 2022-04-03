@@ -4108,6 +4108,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4379091098674514585, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199731468743586328, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199731468743586331, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0465584
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199731468743586331, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0052206516
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199731468743586332, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: waitAfterInteraction
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199731468743586332, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: waitBeforeInteraction
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7199731469910848453, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
       propertyPath: m_Name
       value: LiftManager
@@ -4118,7 +4142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7199731469910848455, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18725902
+      value: -0.39
       objectReference: {fileID: 0}
     - target: {fileID: 7199731469910848455, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
       propertyPath: m_LocalPosition.y

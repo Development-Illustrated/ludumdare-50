@@ -156,7 +156,7 @@ public class DudeController : MonoBehaviour
         if (other.gameObject.GetComponent<Interactable>())
         {
             currentInteractable = other.gameObject.GetComponent<Interactable>();
-            int interactionTime = currentInteractable.Interact();
+            int interactionTime = currentInteractable.Interact(this.gameObject);
             resumeTime = Time.time + interactionTime;
         }
     }

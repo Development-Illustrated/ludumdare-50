@@ -7,23 +7,23 @@ public class Lift : MonoBehaviour
 
     LiftManager liftManager;
     [SerializeField] public int liftIndex;
-    [SerializeField] public List<Transform> exitPositions;
+    [SerializeField] public Transform spawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         liftManager = transform.parent.GetComponent<LiftManager>();
         liftIndex = transform.GetSiblingIndex();
+        spawnPoint = transform.Find("SpawnPoint");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void EnterLift(GameObject obj)
     {
-        Debug.Log("Lift has been triggered by " + other.gameObject.name);
-        liftManager.EnterLift(liftIndex, other.gameObject);
+        liftManager.EnterLift(liftIndex, obj);
     }
 
     public Vector3 GetExitPosition()
     {
-        return exitPositions[Random.Range(0, exitPositions.Count)].position;
+        return spawnPoint.position;
     }
 }
