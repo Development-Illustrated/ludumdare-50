@@ -64,15 +64,15 @@ public class CountManager : MonoBehaviour
         {
             case CountType.Hazard:
                 hazardCount += 1;
-                updateText(hazardTxt, "Hazards: " + hazardCount);
+                updateText(hazardTxt, hazardCount);
                 break;
             case CountType.Population:
                 populationCount += 1;
-                updateText(populationTxt, "Population: " + populationCount);
+                updateText(populationTxt, populationCount);
                 break;
             case CountType.Death:
                 deadCount += 1;
-                updateText(deadTxt, "Dead: " + deadCount);
+                updateText(deadTxt, deadCount);
                 break;
         }
 
@@ -90,19 +90,19 @@ public class CountManager : MonoBehaviour
         {
             case CountType.Hazard:
                 hazardCount -= 1;
-                updateText(hazardTxt, "Hazards: " + hazardCount);
+                updateText(hazardTxt, hazardCount);
                 break;
             case CountType.Population:
                 populationCount -= 1;
-                updateText(populationTxt, "Population: " + populationCount);
+                updateText(populationTxt, populationCount);
                 break;
         }
     }
 
-    private void updateText(Text field, string text)
+    private void updateText(Text field, int text)
     {
         if (field != null)
-            field.text = text;
+            field.text = text.ToString();
     }
 
     public void clearCounts()
