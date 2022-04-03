@@ -32,7 +32,7 @@ public class DudeController : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        dudeNumber = Random.Range(1, 1);
+        dudeNumber = Random.Range(1, 6);
     }
 
     // Start is called before the first frame update
