@@ -10,18 +10,22 @@ public class PlayerController : MonoBehaviour
     LEFT,
     RIGHT
   }
-  private Vector2 moveVector;
-  private Rigidbody2D rb;
-
-  private Animator animator;
-  private Direction lastDirection;
-
-  private float prevMaxSpeed;
-  private float currentSpeed;
 
   [Header("Attributes")]
   [SerializeField] private float accelerationSpeed = 3f;
   [SerializeField] private float maximumSpeed;
+
+  [Header("References")]
+  [SerializeField] private Canvas messageCanvas;
+
+  private Vector2 moveVector;
+  private Rigidbody2D rb;
+  private Animator animator;
+  private Direction lastDirection;
+  private float prevMaxSpeed;
+  private float currentSpeed;
+  private Hazzard currentHazardObject;
+
   void Awake()
   {
     rb = gameObject.GetComponent<Rigidbody2D>();
@@ -31,11 +35,20 @@ public class PlayerController : MonoBehaviour
   void Start()
   {
     animator.SetBool("isIdle", true);
+    messageCanvas.gameObject.SetActive(false);
   }
 
   public void HandleMovement(InputAction.CallbackContext context)
   {
     moveVector = context.ReadValue<Vector2>();
+  }
+
+  public void HandleClearHazard(InputAction.CallbackContext context)
+  {
+    if (currentHazardObject)
+    {
+      currentHazardObject.SendMessage("ClearHazzard", null);
+    }
   }
 
   void FixedUpdate()
@@ -68,27 +81,43 @@ public class PlayerController : MonoBehaviour
 
   private void UpdateAnimator()
   {
-    float fuck = Mathf.Abs(rb.velocity.x);
-    prevMaxSpeed = fuck;
+    float currentSpeed = Mathf.Abs(rb.velocity.x);
+    prevMaxSpeed = currentSpeed;
 
-    if (fuck > 0 && fuck < 5)
+    if (currentSpeed > 0 && currentSpeed < 5)
     {
       animator.SetBool("isIdle", false);
       animator.SetBool("isAccelerating", true);
     }
 
-    if (fuck > 5)
+    if (currentSpeed > 5)
     {
       animator.SetBool("isAccelerating", false);
       animator.SetBool("isMaxSpeed", true);
     }
 
-    if (fuck < 1)
+    if (currentSpeed < 1)
     {
       animator.SetBool("isAccelerating", false);
-      // animator.SetBool("isDecelerating", false);
       animator.SetBool("isMaxSpeed", false);
       animator.SetBool("isIdle", true);
     }
+  }
+
+  private void OnTriggerEnter2D(Collider2D coll)
+  {
+    if (coll.gameObject.GetComponent<Hazzard>())
+    {
+      currentHazardObject = coll.gameObject.GetComponent<Hazzard>();
+
+      messageCanvas.gameObject.SetActive(true);
+    }
+  }
+
+
+  private void OnTriggerExit2D(Collider2D coll)
+  {
+    currentHazardObject = null;
+    messageCanvas.gameObject.SetActive(false);
   }
 }
