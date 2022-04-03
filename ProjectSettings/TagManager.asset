@@ -8,6 +8,7 @@ TagManager:
   - ShowOnGameOver
   - ShowOnGamePause
   - ShowInGame
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
