@@ -15,6 +15,7 @@ public class DudeController : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float timeBetweenDecisions;
     [SerializeField] private float randomChanceChangeDirection;
+    Animator anim;
 
     [Header("State")]
     private bool isGoingRight;
@@ -31,6 +32,8 @@ public class DudeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+
         try
         {
             CountManager.Instance.incrementCount(CountManager.CountType.Population);
@@ -112,10 +115,31 @@ public class DudeController : MonoBehaviour
         {
             currentSpeed = 0;
         }
-
         movement = new Vector3(currentSpeed, -gravity, 0f);
-
         rb.MovePosition(transform.position + movement * Time.fixedDeltaTime);
+        UpdateAnimator();
+    }
+
+    private void UpdateAnimator()
+    {
+        if (Mathf.Abs(currentSpeed) > 0)
+        {
+            anim.SetBool("IsWalking", true);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
+        }
+
+        if (isGoingRight)
+        {
+            transform.localScale = Vector3.one;
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, 1, 0);
+        }
+
     }
 
 
