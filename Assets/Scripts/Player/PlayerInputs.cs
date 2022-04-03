@@ -319,7 +319,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b8f7c688-fb8f-4cc2-a81f-974e8a834319"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

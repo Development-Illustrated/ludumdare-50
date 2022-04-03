@@ -5,90 +5,122 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    enum Direction
+  enum Direction
+  {
+    LEFT,
+    RIGHT
+  }
+  private Vector2 moveVector;
+  private Rigidbody2D rb;
+
+  private Animator animator;
+  private Direction lastDirection;
+  private Hazzard currentHazzard;
+
+  private float prevMaxSpeed;
+  private float currentSpeed;
+
+  [Header("Attributes")]
+  [SerializeField] private float accelerationSpeed = 3f;
+  [SerializeField] private float maximumSpeed;
+
+  [Header("References")]
+  [SerializeField] private Canvas yoMessage;
+  void Awake()
+  {
+    rb = gameObject.GetComponent<Rigidbody2D>();
+    animator = gameObject.GetComponentInChildren<Animator>();
+    yoMessage.gameObject.SetActive(false);
+  }
+
+  void Start()
+  {
+    animator.SetBool("isIdle", true);
+  }
+
+  public void HandleMovement(InputAction.CallbackContext context)
+  {
+    moveVector = context.ReadValue<Vector2>();
+  }
+
+  public void HandleInteract(InputAction.CallbackContext context)
+  {
+    if (currentHazzard)
     {
-        LEFT,
-        RIGHT
+      currentHazzard.SendMessage("ClearHazzard", null);
     }
-    private Vector2 moveVector;
-    private Rigidbody2D rb;
+  }
 
-    private Animator animator;
-    private Direction lastDirection;
-
-    private float prevMaxSpeed;
-    private float currentSpeed;
-
-    [Header("Attributes")]
-    [SerializeField] private float accelerationSpeed = 3f;
-    [SerializeField] private float maximumSpeed;
-    void Awake()
+  public void OnTriggerEnter2D(Collider2D col)
+  {
+    if (col.gameObject.GetComponent<Hazzard>())
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        animator = gameObject.GetComponentInChildren<Animator>();
+      Hazzard yo = col.gameObject.GetComponent<Hazzard>();
+      if (yo.enabled)
+      {
+        currentHazzard = col.gameObject.GetComponent<Hazzard>();
+        yoMessage.gameObject.SetActive(true);
+      }
     }
+  }
 
-    void Start()
+  public void OnTriggerExit2D(Collider2D col)
+  {
+    currentHazzard = null;
+    yoMessage.gameObject.SetActive(false);
+  }
+
+  void FixedUpdate()
+  {
+    FlipSprite();
+    UpdateAnimator();
+    rb.AddForce(new Vector2(moveVector.x * accelerationSpeed, moveVector.y * accelerationSpeed), ForceMode2D.Impulse);
+  }
+
+  private void FlipSprite()
+  {
+    if (rb.velocity.x > 0)
     {
-        animator.SetBool("isIdle", true);
+      lastDirection = Direction.RIGHT;
     }
-
-    public void HandleMovement(InputAction.CallbackContext context)
+    else if (rb.velocity.x < 0)
     {
-        moveVector = context.ReadValue<Vector2>();
+      lastDirection = Direction.LEFT;
     }
 
-    void FixedUpdate()
+    if (lastDirection == Direction.RIGHT)
     {
-        FlipSprite();
-        UpdateAnimator();
-        rb.AddForce(new Vector2(moveVector.x * accelerationSpeed, moveVector.y * accelerationSpeed), ForceMode2D.Impulse);
+      transform.localScale = new Vector3(-1, 1, 0);
     }
-
-    private void FlipSprite()
+    else if (lastDirection == Direction.LEFT)
     {
-        if (rb.velocity.x > 0)
-        {
-            lastDirection = Direction.RIGHT;
-        }
-        else if (rb.velocity.x < 0)
-        {
-            lastDirection = Direction.LEFT;
-        }
-
-        if (lastDirection == Direction.RIGHT)
-        {
-            transform.localScale = new Vector3(-1, 1, 0);
-        }
-        else if (lastDirection == Direction.LEFT)
-        {
-            transform.localScale = Vector3.one;
-        }
+      transform.localScale = Vector3.one;
     }
+  }
 
-    private void UpdateAnimator()
+  private void UpdateAnimator()
+  {
+    float fuck = Mathf.Abs(rb.velocity.x);
+    prevMaxSpeed = fuck;
+
+    if (fuck > 0 && fuck < 5)
     {
-        float fuck = Mathf.Abs(rb.velocity.x);
-        prevMaxSpeed = fuck;
-
-        if (fuck > 0 && fuck < 5)
-        {
-            animator.SetBool("isIdle", false);
-            animator.SetBool("isAccelerating", true);
-        }
-
-        if (fuck > 5)
-        {
-            animator.SetBool("isAccelerating", false);
-            animator.SetBool("isMaxSpeed", true);
-        }
-
-        if (fuck < 1)
-        {
-            animator.SetBool("isAccelerating", false);
-            // animator.SetBool("isDecelerating", false);
-            animator.SetBool("isMaxSpeed", false);
-            animator.SetBool("isIdle", true);
-        }
+      animator.SetBool("isIdle", false);
+      animator.SetBool("isAccelerating", true);
     }
+
+    if (fuck > 5)
+    {
+      animator.SetBool("isAccelerating", false);
+      animator.SetBool("isMaxSpeed", true);
+    }
+
+    if (fuck < 1)
+    {
+      animator.SetBool("isAccelerating", false);
+      // animator.SetBool("isDecelerating", false);
+      animator.SetBool("isMaxSpeed", false);
+      animator.SetBool("isIdle", true);
+    }
+  }
 }

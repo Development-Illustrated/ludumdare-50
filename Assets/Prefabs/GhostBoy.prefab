@@ -172,7 +172,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3622454329526420633}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: HandleClearHazard
+        m_MethodName: HandleInteract
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelerationSpeed: 3
   maximumSpeed: 5
-  messageCanvas: {fileID: 6861303135414818418}
+  yoMessage: {fileID: 6861303135414818418}
 --- !u!212 &1163821831801061196
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2138936335
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 9
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -325,7 +325,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2138936335
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 9999
   m_Sprite: {fileID: 8159382561928021756, guid: e2806fc5b313844398f4d06ca171aa8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press F to Fuck
+  m_text: Press SPACE for doggy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
