@@ -26,11 +26,13 @@ public class DudeController : MonoBehaviour
     private float nextDecisionTime;
     public bool isAlive;
 
+    private int dudeNumber;
+
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        anim.SetInteger("DudeNumber", Random.Range(1, 6));
+        dudeNumber = Random.Range(1, 6);
     }
 
     // Start is called before the first frame update
@@ -46,6 +48,7 @@ public class DudeController : MonoBehaviour
         isGoingRight = utils.randomBoolean();
         currentSpeed = 0f;
         nextDecisionTime = Time.time + timeBetweenDecisions;
+        anim.SetInteger("DudeNumber", dudeNumber);
     }
 
     void Update()
