@@ -202,13 +202,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3457615790696571899, guid: 66e9090f6543d13498506963d9465ba5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.94
+      objectReference: {fileID: 0}
+    - target: {fileID: -3457615790696571899, guid: 66e9090f6543d13498506963d9465ba5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: -306446294458791846, guid: 66e9090f6543d13498506963d9465ba5, type: 3}
       propertyPath: m_Name
       value: LukeTestTilemap
       objectReference: {fileID: 0}
     - target: {fileID: 4139359382111043130, guid: 66e9090f6543d13498506963d9465ba5, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4139359382111043130, guid: 66e9090f6543d13498506963d9465ba5, type: 3}
       propertyPath: m_LocalPosition.x

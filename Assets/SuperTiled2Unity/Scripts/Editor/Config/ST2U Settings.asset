@@ -55,7 +55,9 @@ MonoBehaviour:
   - {r: 0.7372549, g: 0.56078434, b: 0.56078434, a: 1}
   m_CustomObjectTypes: []
   m_PrefabReplacements:
-  - m_TypeName: DeathBoySpawner
-    m_Prefab: {fileID: 5160140222139861965, guid: 02dbd6eab6f56495e924df1e980ec8eb, type: 3}
-  - m_TypeName: CopierMachine
+  - m_TypeName: Copier
     m_Prefab: {fileID: 3628313635245821146, guid: 73c2d28737aa54eb38d09d50ef29161c, type: 3}
+  - m_TypeName: Door
+    m_Prefab: {fileID: 3768949413734166774, guid: 1dcf40f72fb824d8980b0db8bc2d996e, type: 3}
+  - m_TypeName: Dude
+    m_Prefab: {fileID: 5160140222139861965, guid: 02dbd6eab6f56495e924df1e980ec8eb, type: 3}
