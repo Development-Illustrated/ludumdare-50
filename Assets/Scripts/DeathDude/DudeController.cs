@@ -32,7 +32,7 @@ public class DudeController : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        dudeNumber = Random.Range(1, 6);
+        dudeNumber = Random.Range(1, 1);
     }
 
     // Start is called before the first frame update
@@ -60,6 +60,8 @@ public class DudeController : MonoBehaviour
             {
                 currentInteractable.StopInteract();
                 currentInteractable = null;
+                anim.SetBool("IsInteracting", false);
+                anim.SetBool("IsWalking", false);
             }
         }
 
@@ -161,6 +163,8 @@ public class DudeController : MonoBehaviour
             currentInteractable = other.gameObject.GetComponent<Interactable>();
             int interactionTime = currentInteractable.Interact(this.gameObject);
             resumeTime = Time.time + interactionTime;
+            anim.SetBool("IsInteracting", true);
+            anim.SetBool("IsWalking", false);
         }
         if (other.gameObject.GetComponent<Lift>())
         {
