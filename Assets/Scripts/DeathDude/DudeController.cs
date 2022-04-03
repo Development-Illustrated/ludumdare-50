@@ -27,12 +27,15 @@ public class DudeController : MonoBehaviour
     public bool isAlive;
 
 
-
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+        anim.SetInteger("DudeNumber", Random.Range(1, 6));
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
 
         try
         {
