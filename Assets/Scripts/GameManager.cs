@@ -24,13 +24,6 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
     }
 
-    void Update()
-    {
-        if (CountManager.Instance.deadCount > CountManager.Instance.populationCount)
-        {
-            ChangeState(GameState.Lose);
-        }
-    }
 
     public void TogglePause()
     {
