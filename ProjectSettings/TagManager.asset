@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ShowOnMainMenu
+  - ShowOnGameOver
+  - ShowOnGamePause
+  - ShowInGame
   layers:
   - Default
   - TransparentFX
@@ -12,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Blocking
-  - 
+  - Dude
   - 
   - 
   - 
