@@ -2452,7 +2452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  gameSceneName: GameScene
+  gameSceneName: FinalFinalGameSceneRev2
 --- !u!4 &2080547028
 Transform:
   m_ObjectHideFlags: 0
