@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7e543715cd3446393a0ef00ab94638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topSpeed: 5
+  topSpeed: 4
   acceleration: 20
   deceleration: 0
   gravity: 5
-  timeBetweenDecisions: 2
+  timeBetweenDecisions: 4
   randomChanceChangeDirection: 0.5
   isAlive: 0
 --- !u!70 &5160140222139861966
