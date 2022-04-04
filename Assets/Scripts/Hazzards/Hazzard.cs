@@ -32,7 +32,6 @@ public class Hazzard : MonoBehaviour
                 effectPs.Play();
             }
 
-            Debug.Log("YO WE HERE BITCH BOI");
             if (killsPlayer)
             {
                 other.gameObject.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);

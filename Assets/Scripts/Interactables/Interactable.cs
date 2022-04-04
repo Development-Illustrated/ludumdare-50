@@ -10,6 +10,11 @@ public class Interactable : MonoBehaviour
     [SerializeField] private int interactionTime;
     [SerializeField] private Sprite alternateSprite;
     [SerializeField] private Color alternateColor;
+
+    [SerializeField]
+    private AudioClip interactClip;
+
+    private PlayAudio playAudio;
     private Sprite originalSprite;
     private Color originalColor;
 
@@ -23,6 +28,7 @@ public class Interactable : MonoBehaviour
         originalColor = spriteRenderer.color;
         originalSprite = spriteRenderer.sprite;
         decayScript = GetComponent<Decay>();
+        playAudio = GetComponent<PlayAudio>();
     }
 
     void Update()
@@ -36,6 +42,10 @@ public class Interactable : MonoBehaviour
             else if (alternateColor != null)
             {
                 spriteRenderer.color = alternateColor;
+            }
+            if (playAudio)
+            {
+                playAudio.PlayOneShot(interactClip);
             }
             timeUntilStartInteraction = 0f;
         }
