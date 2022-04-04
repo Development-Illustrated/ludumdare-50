@@ -23,8 +23,11 @@ public class Interactable : MonoBehaviour
     public bool available;
 
     private Decay decayScript;
+
+    private Hazzard hazzard;
     void Start()
     {
+        hazzard = GetComponent<Hazzard>();
         available = true;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
@@ -47,16 +50,9 @@ public class Interactable : MonoBehaviour
             }
             timeUntilStartInteraction = 0f;
         }
-        if (timeUntilStopInteraction > 0f && Time.time > timeUntilStopInteraction)
-        {
-            spriteRenderer.sprite = originalSprite;
-            spriteRenderer.color = originalColor;
-            timeUntilStopInteraction = 0f;
-            available = true;
-        }
     }
 
-    public int Interact(GameObject obj = null)
+    public int Interact()
     {
         Debug.Log("Started interacting with " + this.name);
         available = false;
@@ -72,10 +68,18 @@ public class Interactable : MonoBehaviour
         return interactionTime;
     }
 
-    public void StopInteract()
+    public void StopInteract(DudeController dudeInteracting)
     {
         Debug.Log("Stopped interacting with " + this.name);
+        available = true;
         timeUntilStopInteraction = Time.time + waitAfterInteraction;
+        spriteRenderer.sprite = originalSprite;
+        spriteRenderer.color = originalColor;
+        
+        if(hazzard != null && hazzard.enabled && hazzard.killsPlayer && dudeInteracting.isAlive)
+        {
+            dudeInteracting.Kill();
+        }
     }
 }
 

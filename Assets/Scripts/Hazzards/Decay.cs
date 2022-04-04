@@ -12,7 +12,6 @@ public class Decay : MonoBehaviour
     private bool decayUsingUses;
     private bool isDecayed;
     private Hazzard hazardScript;
-    private Interactable interactableScript;
 
     void Start()
     {
@@ -21,38 +20,31 @@ public class Decay : MonoBehaviour
         decayUsingTime = decayAfterXSeconds > 0;
         decayUsingUses = decayAfterXUses > 0;
         hazardScript = this.gameObject.GetComponent<Hazzard>();
-        interactableScript = this.gameObject.GetComponent<Interactable>();
     }
 
     void Update()
     {
-        if (
-            !isDecayed && (
-                (decayUsingUses && currentUses == decayAfterXUses) ||
-                (
-                    decayUsingTime &&
-                        elapsedTime + decayAfterXSeconds < Time.time
-                )
-            )
-        ) {
+        if (!isDecayed && decayUsingTime && elapsedTime + decayAfterXSeconds < Time.time)
+        {
             DecayHazard();
         }
     }
 
     public void OnUse()
     {
-        // if hazzard script not enabled
-        if (!hazardScript.enabled)
-            currentUses += 1;
+        currentUses += 1;
+        if(decayUsingUses && currentUses >= decayAfterXUses)
+        {
+            DecayHazard();
+        }
     }
 
     public void DecayHazard()
     {
-        Debug.Log("Hazard has Decayed");
+        Debug.Log(this.name + " hazard has Decayed");
         isDecayed = true;
         elapsedTime = Time.time;
         hazardScript.enabled = true;
-        interactableScript.enabled = false;
     }
 
     public void FixHazard()
@@ -62,6 +54,5 @@ public class Decay : MonoBehaviour
         isDecayed = false;
         elapsedTime = Time.time;
         hazardScript.enabled = false;
-        interactableScript.enabled = true;
     }
 }

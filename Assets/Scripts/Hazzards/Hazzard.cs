@@ -22,22 +22,6 @@ public class Hazzard : MonoBehaviour
         ogColor = spriteRenderer.color;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (this.enabled)
-        {
-            Debug.Log(this.name + " triggerEnterHit");
-            if (effectPs != null)
-            {
-                effectPs.Play();
-            }
-
-            if (killsPlayer)
-            {
-                other.gameObject.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
-            }
-        }
-    }
 
     public void OutlineMe(bool doIt)
     {
