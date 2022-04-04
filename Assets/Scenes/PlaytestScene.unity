@@ -753,10 +753,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostBoy
       objectReference: {fileID: 0}
-    - target: {fileID: 3622454329526420634, guid: 6ac61d04e5d0b435dbf4a92fbe6c7973, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3622454329526420637, guid: 6ac61d04e5d0b435dbf4a92fbe6c7973, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -800,18 +796,6 @@ PrefabInstance:
     - target: {fileID: 3622454329526420637, guid: 6ac61d04e5d0b435dbf4a92fbe6c7973, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622454329526420639, guid: 6ac61d04e5d0b435dbf4a92fbe6c7973, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622454329527127740, guid: 6ac61d04e5d0b435dbf4a92fbe6c7973, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4784466883954722485, guid: 6ac61d04e5d0b435dbf4a92fbe6c7973, type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ac61d04e5d0b435dbf4a92fbe6c7973, type: 3}
@@ -3008,14 +2992,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1382497094}
-    - target: {fileID: 4913346477394769529, guid: 44665a94df91a446cb2b326fba993e02, type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4913346477394769531, guid: 44665a94df91a446cb2b326fba993e02, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4913346477394769531, guid: 44665a94df91a446cb2b326fba993e02, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
