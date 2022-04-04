@@ -22,6 +22,7 @@ public class CountManager : MonoBehaviour
     {
         Population,
         Hazard,
+        HazardFixed,
         Death
     }
 
@@ -32,6 +33,7 @@ public class CountManager : MonoBehaviour
     public GameObject populationCounter;
     [SerializeField]
     public GameObject deadCounter;
+    public GameObject[] scoreObjects;
 
     private Text hazardTxt;
     private Text populationTxt;
@@ -40,11 +42,11 @@ public class CountManager : MonoBehaviour
     public int hazardCount;
     public int populationCount;
     public int deadCount;
-
-
+    public int hazardFixedCount;
 
     void Start()
     {
+        score = GameObject.FindGameObjectsWithTag("Score");
         hazardCount = 0;
         populationCount = 0;
         deadCount = 0;
@@ -58,6 +60,23 @@ public class CountManager : MonoBehaviour
             deadTxt = deadCounter.GetComponent<Text>();
     }
 
+    void Update()
+    {
+        foreach (GameObject score in scoreObjects)
+        {
+            Text txt = score.GetComponent<Text>();
+            txt.Text = "Score: " + CalculateScore();
+        }
+    }
+
+    public int CalculateScore()
+    {
+        return (CountManager.Instance.populationCount * 100) +
+            (CountManager.Instance.hazardFixedCount * 100) -
+            (CountManager.Instance.deadCount * 50) -
+            (CountManager.Instance.hazardCount * 50);
+    }
+
     public void incrementCount(CountType type)
     {
         Debug.Log("Count manager incrementing count: " + type);
@@ -66,6 +85,9 @@ public class CountManager : MonoBehaviour
             case CountType.Hazard:
                 hazardCount += 1;
                 updateText(hazardTxt, hazardCount);
+                break;
+            case CountType.HazardFixed:
+                hazardFixedCount += 1;
                 break;
             case CountType.Population:
                 populationCount += 1;
