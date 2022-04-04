@@ -2993,6 +2993,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1382497094}
     - target: {fileID: 4913346477394769531, guid: 44665a94df91a446cb2b326fba993e02, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913346477394769531, guid: 44665a94df91a446cb2b326fba993e02, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 1234690464}
