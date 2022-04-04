@@ -4919,6 +4919,7 @@ MonoBehaviour:
   ongoingPs: {fileID: 4410932255031875367}
   interactionColor: {r: 0.5411765, g: 1, b: 0.5058824, a: 0.99215686}
   hazzardSoundFX: {fileID: 8300000, guid: 46db4a73797d5184885f7c250bd758d1, type: 3}
+  hazzardSoundFXVolume: 1.5
   continuousHazzardSoundFX: {fileID: 8300000, guid: 58b30d8bb7298f948ad6c293f05be76d, type: 3}
   isHazardous: 0
 --- !u!82 &1653915906
@@ -5030,7 +5031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: 1
-  continousVolume: 0.1
+  continousVolume: 0.15
 --- !u!1 &3628313636491399439
 GameObject:
   m_ObjectHideFlags: 0

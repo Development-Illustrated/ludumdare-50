@@ -273,8 +273,8 @@
 21,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 1,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-21,4,109,0,0,0,0,0,0,0,0,0,0,0,0,0,
-3,109,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+21,4,33,0,0,0,0,0,0,0,0,0,0,0,0,0,
+3,33,33,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 2,3,6,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -632,18 +632,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="11" name="Interactables">
-  <object id="91" type="Interactable" x="416" y="-32" width="32" height="32"/>
-  <object id="92" type="Interactable" x="128" y="-32" width="32" height="32"/>
-  <object id="93" type="Interactable" x="256" y="-128" width="32" height="32"/>
-  <object id="94" type="Interactable" x="416" y="-128" width="32" height="32"/>
-  <object id="96" type="Interactable" x="224" y="-224" width="32" height="32"/>
-  <object id="97" type="Interactable" x="96" y="-224" width="32" height="32"/>
-  <object id="98" type="Interactable" x="576" y="-224" width="32" height="32"/>
-  <object id="99" type="Interactable" x="128" y="-320" width="32" height="32"/>
-  <object id="100" type="Interactable" x="256" y="-320" width="32" height="32"/>
-  <object id="101" type="Interactable" x="448" y="-320" width="32" height="32"/>
- </objectgroup>
+ <objectgroup id="11" name="Interactables"/>
  <objectgroup id="5" name="Lighting Layer" visible="0">
   <object id="84" type="RoundLight" x="112" y="48">
    <point/>
