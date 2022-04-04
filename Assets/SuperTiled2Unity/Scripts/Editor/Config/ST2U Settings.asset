@@ -55,7 +55,9 @@ MonoBehaviour:
   - {r: 0.7372549, g: 0.56078434, b: 0.56078434, a: 1}
   m_CustomObjectTypes: []
   m_PrefabReplacements:
-  - m_TypeName: Interactable
-    m_Prefab: {fileID: 4430718778014686253, guid: e54f8bdbc37a249a1afb5e462e2af20b, type: 3}
-  - m_TypeName: SpawnPoint
+  - m_TypeName: Copier
+    m_Prefab: {fileID: 3628313635245821146, guid: 73c2d28737aa54eb38d09d50ef29161c, type: 3}
+  - m_TypeName: Fridge
+    m_Prefab: {fileID: 3628313635245821146, guid: 2cfdf3c68bfec4d6a9f1ec4442064202, type: 3}
+  - m_TypeName: Spawn
     m_Prefab: {fileID: 6206121150692373433, guid: 6b2e211f676274be5bf04db51ad6d842, type: 3}
