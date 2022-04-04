@@ -747,6 +747,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7199731468743586329, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: liftCooldownTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7199731468743586330, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
       propertyPath: m_SortingLayer
       value: 5

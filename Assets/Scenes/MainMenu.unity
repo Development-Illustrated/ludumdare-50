@@ -1874,6 +1874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867095571}
+  - component: {fileID: 1867095572}
   - component: {fileID: 1867095570}
   m_Layer: 0
   m_Name: MusicManager
@@ -1992,6 +1993,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1867095572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867095569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165b7848144517408e5a5dad2f96b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuMusic: {fileID: 8300000, guid: 90e320ecf5368254bbb27cb3b2078029, type: 3}
+  gameMusic: {fileID: 8300000, guid: 3adf5787038531949b07cb52c82437f6, type: 3}
 --- !u!1 &1874215531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,9 +2224,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  isPaused: 0
   gameSceneName: FinalFinalGameSceneRev2
   fakeSceneName: FakeGameMainMenuScene
   blueEffect: {fileID: 52807781}
+  musicManager: {fileID: 1867095572}
 --- !u!4 &2080547028
 Transform:
   m_ObjectHideFlags: 0
