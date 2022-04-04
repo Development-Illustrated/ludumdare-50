@@ -62,16 +62,26 @@ public class UIManager : MonoBehaviour
         Debug.Log("Ui manager: Pause Callback recieved");
         if (obj.performed)
         {
-            if (GameManager.Instance.currentState == GameManager.GameState.Play)
-            {
-                ShowElements(pauseObjects);
-            }
-            else if (GameManager.Instance.currentState == GameManager.GameState.Pause)
-            {
-                HideElements(pauseObjects);
-            }
-            GameManager.Instance.TogglePause();
+           HandlePause();
         }
+    }
+
+    public void HandlePause()
+    {
+        if (GameManager.Instance.currentState == GameManager.GameState.Play)
+        {
+            ShowElements(pauseObjects);
+        }
+        else if (GameManager.Instance.currentState == GameManager.GameState.Pause)
+        {
+            HideElements(pauseObjects);
+        }
+        GameManager.Instance.TogglePause();
+    }
+
+    public void Resume()
+    {
+        HandlePause();
     }
 
     public void QuitGame()
