@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalFinalGameSceneRev2.unity
     guid: 7dee936322c134343829867c7b120d8d
+  - enabled: 1
+    path: Assets/Scenes/FakeGameMainMenuScene.unity
+    guid: 235448d076957c74299ef101e869ad78
   m_configObjects: {}

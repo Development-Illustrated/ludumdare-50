@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CountManager : MonoBehaviour
 {
     public static CountManager Instance;
+    public bool ignoreEndGame;
 
     private void Awake()
     {
@@ -77,7 +78,7 @@ public class CountManager : MonoBehaviour
         }
 
 
-        if (deadCount > populationCount)
+        if (deadCount > populationCount && !ignoreEndGame)
         {
             GameManager.Instance.ChangeState(GameManager.GameState.Lose);
         }

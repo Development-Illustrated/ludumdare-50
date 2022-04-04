@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : Singleton<GameManager>
 {
     public enum GameState
@@ -16,14 +17,16 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     private string gameSceneName = "GameScene";
+    [SerializeField] private string fakeSceneName = "FakeGameMainMenuScene";
+    [SerializeField] GameObject blueEffect;
 
-    void Start()
+    private void Awake() 
     {
+        SceneManager.LoadScene(fakeSceneName, LoadSceneMode.Additive);
         Debug.Log("Game manager starting");
         currentState = GameState.Menu;
         Time.timeScale = 1;
     }
-
 
     public void TogglePause()
     {
@@ -43,13 +46,16 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("GameManager: Request state change from " + currentState + " to " + newState);
         if (currentState == GameManager.GameState.Menu & newState == GameState.Play)
         {
+            SceneManager.UnloadSceneAsync(fakeSceneName);
+            blueEffect.SetActive(false);            
             SceneManager.LoadScene(gameSceneName, LoadSceneMode.Additive);
         }
         else if (newState == GameState.Menu)
         {
             Time.timeScale = 1;
-            GL.Clear(true, true, Color.black, 1f);
             SceneManager.UnloadSceneAsync(gameSceneName);
+            blueEffect.SetActive(true);
+            SceneManager.LoadScene(fakeSceneName, LoadSceneMode.Additive);
         }
         else if (currentState == GameState.Play & newState == GameState.Pause)
         {
