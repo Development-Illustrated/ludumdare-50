@@ -16,7 +16,11 @@ public class DudeController : MonoBehaviour
     [SerializeField] private float timeBetweenDecisions;
     [SerializeField] private float randomChanceChangeDirection;
     [SerializeField] int outerWallLayer = 8;
+    [SerializeField] List<AudioClip> deathSounds;
+    
     Animator anim;
+
+    PlayAudio playAudio;
 
     [Header("State")]
     private bool isGoingRight;
@@ -33,6 +37,7 @@ public class DudeController : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        playAudio = GetComponent<PlayAudio>();
         dudeNumber = Random.Range(1, 5);
     }
 
@@ -150,8 +155,6 @@ public class DudeController : MonoBehaviour
 
     }
 
-
-
     public void Kill()
     {
         isAlive = false;
@@ -159,6 +162,14 @@ public class DudeController : MonoBehaviour
         CountManager.Instance.incrementCount(CountManager.CountType.Death);
         Debug.Log("Oh no something killed me!");
         anim.SetBool("IsDeading", true);
+        PlayDeathSound();
+        Destroy(this.gameObject, 10);
+    }
+
+    private void PlayDeathSound()
+    {
+        AudioClip chosenClip = deathSounds[Random.Range(0, deathSounds.Count)];
+        playAudio.PlayOneShot(chosenClip);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
