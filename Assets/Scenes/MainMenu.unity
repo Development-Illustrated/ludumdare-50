@@ -639,8 +639,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 6242040739825207044, guid: a9885751b36a74946851f98894a9300f, type: 3}
-    m_PressedSprite: {fileID: -6556153618802061690, guid: a9885751b36a74946851f98894a9300f, type: 3}
+    m_HighlightedSprite: {fileID: 8316664076139131961, guid: c9b9ec3f109815a4fa660fd54cb6099a, type: 3}
+    m_PressedSprite: {fileID: 6180532343445338176, guid: c9b9ec3f109815a4fa660fd54cb6099a, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8133006976237467021, guid: a9885751b36a74946851f98894a9300f, type: 3}
+  m_Sprite: {fileID: 2644593153905384621, guid: c9b9ec3f109815a4fa660fd54cb6099a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1873,8 +1873,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 6242040739825207044, guid: a9885751b36a74946851f98894a9300f, type: 3}
-    m_PressedSprite: {fileID: -6556153618802061690, guid: a9885751b36a74946851f98894a9300f, type: 3}
+    m_HighlightedSprite: {fileID: 8316664076139131961, guid: c9b9ec3f109815a4fa660fd54cb6099a, type: 3}
+    m_PressedSprite: {fileID: 6180532343445338176, guid: c9b9ec3f109815a4fa660fd54cb6099a, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1932,7 +1932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8133006976237467021, guid: a9885751b36a74946851f98894a9300f, type: 3}
+  m_Sprite: {fileID: 2644593153905384621, guid: c9b9ec3f109815a4fa660fd54cb6099a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   isPaused: 0
-  gameSceneName: FinalFinalGameSceneRev2
+  gameSceneName: PlaytestScene
   fakeSceneName: FakeGameMainMenuScene
   blueEffect: {fileID: 52807781}
   musicManager: {fileID: 1867095572}

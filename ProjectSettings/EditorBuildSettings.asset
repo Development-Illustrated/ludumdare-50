@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene.unity
     guid: 3427df25663f14077a7673440c995037
   - enabled: 1
+    path: Assets/Scenes/PlaytestScene.unity
+    guid: b3a3ee7e88c5b0b48a5832de197d83d6
+  - enabled: 0
     path: Assets/Scenes/FinalFinalGameSceneRev2.unity
     guid: 7dee936322c134343829867c7b120d8d
   - enabled: 1
