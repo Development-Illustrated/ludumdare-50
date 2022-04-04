@@ -7,12 +7,15 @@ public class Lift : MonoBehaviour
 
     LiftManager liftManager;
     [SerializeField] public int liftIndex;
-    [SerializeField] public Transform spawnPoint;
+    
     [SerializeField] float liftCooldownTime;
     [SerializeField] float liftTravelCooldownTime;
 
     [SerializeField] Sprite closedDoors;
     [SerializeField] Sprite openDoors;
+    [SerializeField] AudioClip liftClip;
+    Transform spawnPoint;
+    private PlayAudio playAudio;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D coll;
     private float liftAvailableTime;
@@ -25,6 +28,7 @@ public class Lift : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playAudio = GetComponent<PlayAudio>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
         liftAvailableTime = Time.time;
@@ -62,6 +66,7 @@ public class Lift : MonoBehaviour
         destinationLift = liftManager.GetAvailableLift(this);
         destinationLift.SetAsDestination();
         liftTravelTime = Time.time + liftTravelCooldownTime;
+        playAudio.PlayOneShot(liftClip);
         return liftCooldownTime;
     }
 

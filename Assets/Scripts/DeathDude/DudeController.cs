@@ -161,10 +161,14 @@ public class DudeController : MonoBehaviour
         if (other.gameObject.GetComponent<Interactable>())
         {
             currentInteractable = other.gameObject.GetComponent<Interactable>();
-            int interactionTime = currentInteractable.Interact(this.gameObject);
-            resumeTime = Time.time + interactionTime;
-            anim.SetBool("IsInteracting", true);
-            anim.SetBool("IsWalking", false);
+            if(currentInteractable.available)
+            {
+                int interactionTime = currentInteractable.Interact(this.gameObject);
+                resumeTime = Time.time + interactionTime;
+                anim.SetBool("IsInteracting", true);
+                anim.SetBool("IsWalking", false);
+            }
+            
         }
         if (other.gameObject.GetComponent<Lift>())
         {

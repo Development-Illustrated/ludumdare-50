@@ -20,10 +20,12 @@ public class Interactable : MonoBehaviour
 
     private float timeUntilStartInteraction = 0f;
     private float timeUntilStopInteraction = 0f;
+    public bool available;
 
     private Decay decayScript;
     void Start()
     {
+        available = true;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         originalSprite = spriteRenderer.sprite;
@@ -50,12 +52,14 @@ public class Interactable : MonoBehaviour
             spriteRenderer.sprite = originalSprite;
             spriteRenderer.color = originalColor;
             timeUntilStopInteraction = 0f;
+            available = true;
         }
     }
 
     public int Interact(GameObject obj = null)
     {
         Debug.Log("Started interacting with " + this.name);
+        available = false;
         timeUntilStartInteraction = Time.time + waitBeforeInteraction;
         if (decayScript)
         {
