@@ -9,6 +9,7 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] AudioClip mainMenuMusic;
     [SerializeField] AudioClip gameMusic;
+    [SerializeField] AudioClip gameLoopMusic;
 
     bool paused;
 
@@ -25,7 +26,15 @@ public class MusicManager : MonoBehaviour
 
     public void PlayGameMusic()
     {
+        StartCoroutine(PlayGameLoop());
+    }
+    
+    IEnumerator PlayGameLoop()
+    {
         source.clip = gameMusic;
+        source.Play();
+        yield return new WaitForSeconds(source.clip.length);
+        source.clip = gameLoopMusic;
         source.Play();
     }
 
