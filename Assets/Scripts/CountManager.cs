@@ -72,9 +72,7 @@ public class CountManager : MonoBehaviour
     public int CalculateScore()
     {
         return (CountManager.Instance.populationCount * 100) +
-            (CountManager.Instance.hazardFixedCount * 100) -
-            (CountManager.Instance.deadCount * 50) -
-            (CountManager.Instance.hazardCount * 50);
+            (CountManager.Instance.hazardFixedCount * 100);
     }
 
     public void incrementCount(CountType type)
