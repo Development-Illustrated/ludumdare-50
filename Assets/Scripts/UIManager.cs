@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject[] pauseObjects;
     [SerializeField] GameObject[] mainMenuObjects;
 
+    [SerializeField] GameObject[] tutorialObjects;
+
     void Start()
     {
         Debug.Log("UI manager starting");
@@ -27,6 +29,7 @@ public class UIManager : MonoBehaviour
         HideElements(mainMenuObjects);
         HideElements(pauseObjects);
         HideElements(gameOverObjects);
+        HideElements(tutorialObjects);
 
         GameManager.Instance.ChangeState(GameManager.GameState.Play);
     }
@@ -57,6 +60,16 @@ public class UIManager : MonoBehaviour
         HideElements(pauseObjects);
 
         ShowElements(mainMenuObjects);
+    }
+
+    public void ShowTutorial()
+    {
+        ShowElements(tutorialObjects);
+    }
+
+    public void HideTutorial()
+    {
+        HideElements(tutorialObjects);
     }
 
     public void Pause(InputAction.CallbackContext obj)
