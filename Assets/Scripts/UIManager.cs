@@ -33,8 +33,10 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        if (GameManager.Instance.currentState == GameManager.GameState.Pause)
+        if (GameManager.Instance.currentState == GameManager.GameState.Pause || GameManager.Instance.currentState == GameManager.GameState.Lose)
+        {
             GameManager.Instance.RestartState();
+        }
         else
         {
             GameManager.Instance.ChangeState(GameManager.GameState.Play);
