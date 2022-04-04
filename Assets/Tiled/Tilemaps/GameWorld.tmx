@@ -856,7 +856,7 @@
   <object id="48" name="Copier" type="Copier" gid="230" x="128" y="0" width="32" height="32"/>
   <object id="49" name="Copier" type="Copier" gid="230" x="256" y="0" width="32" height="32"/>
   <object id="52" name="Microwave" type="Microwave" gid="232" x="544" y="0" width="32" height="32"/>
-  <object id="53" name="Fridge" type="Fridge" gid="228" x="640" y="0" width="32" height="32"/>
+  <object id="53" name="Fridge" type="Fridge" gid="228" x="672" y="0" width="32" height="32"/>
   <object id="54" name="Microwave" type="Microwave" gid="232" x="128" y="-96" width="32" height="32"/>
   <object id="55" name="Microwave" type="Microwave" gid="232" x="320" y="-96" width="32" height="32"/>
   <object id="56" name="Microwave" type="Microwave" gid="232" x="512" y="-96" width="32" height="32"/>
