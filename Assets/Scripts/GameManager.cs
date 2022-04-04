@@ -18,7 +18,7 @@ public class GameManager : Singleton<GameManager>
     public bool isPaused;
 
     [SerializeField]
-    private string gameSceneName = "GameScene";
+    private string gameSceneName = "PlaytestScene";
     [SerializeField] private string fakeSceneName = "FakeGameMainMenuScene";
     [SerializeField] GameObject blueEffect;
     [SerializeField] GameObject scoreComponent;
