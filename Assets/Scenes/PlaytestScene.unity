@@ -1990,7 +1990,7 @@ PrefabInstance:
       objectReference: {fileID: 1382497094}
     - target: {fileID: 4913346477394769529, guid: 44665a94df91a446cb2b326fba993e02, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 4
+      value: 3.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44665a94df91a446cb2b326fba993e02, type: 3}
@@ -2127,10 +2127,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1869925557689530683, guid: 329e9049a1cc54bc38ae4933c188388e, type: 3}
-      propertyPath: timeBetweenSpawns
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1869925557689530693, guid: 329e9049a1cc54bc38ae4933c188388e, type: 3}
       propertyPath: m_Name
       value: DudeSpawner
@@ -2192,7 +2188,7 @@ Camera:
   far clip plane: 1000
   field of view: 11.421186
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 3.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

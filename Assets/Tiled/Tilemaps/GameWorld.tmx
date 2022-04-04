@@ -5,7 +5,7 @@
  <tileset firstgid="228" source="../Tilesets/Fridge.tsx"/>
  <tileset firstgid="230" source="../Tilesets/Photocopier.tsx"/>
  <tileset firstgid="232" source="../Tilesets/Microwave.tsx"/>
- <layer id="37" name="Tile Layer 11" width="50" height="38">
+ <layer id="37" name="ahhh" width="50" height="38">
   <data encoding="csv">
    <chunk x="-16" y="0" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -843,7 +843,6 @@
   </data>
  </layer>
  <objectgroup id="21" name="objects">
-  <object id="26" name="Copier" type="Copier" gid="230" x="96" y="-448" width="32" height="32"/>
   <object id="31" name="Fridge" type="Fridge" gid="228" x="672" y="96" width="32" height="32"/>
   <object id="38" name="SpawnPoint" type="Spawn" x="288" y="192" width="32" height="32"/>
   <object id="39" name="SpawnPoint" type="Spawn" x="480" y="192" width="32" height="32"/>
@@ -851,8 +850,6 @@
   <object id="43" name="Microwave" type="Microwave" gid="232" x="64" y="96" width="32" height="32"/>
   <object id="44" name="Copier" type="Copier" gid="230" x="256" y="96" width="32" height="32"/>
   <object id="45" name="Copier" type="Copier" gid="230" x="448" y="96" width="32" height="32"/>
-  <object id="46" name="Fridge" type="Fridge" gid="228" x="64" y="-448" width="32" height="32"/>
-  <object id="47" name="Microwave" type="Microwave" gid="232" x="128" y="-448" width="32" height="32"/>
   <object id="48" name="Copier" type="Copier" gid="230" x="128" y="0" width="32" height="32"/>
   <object id="49" name="Copier" type="Copier" gid="230" x="256" y="0" width="32" height="32"/>
   <object id="52" name="Microwave" type="Microwave" gid="232" x="544" y="0" width="32" height="32"/>
