@@ -33,9 +33,9 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        if (GameManager.Instance.currentState == GameManager.GameState.Pause || GameManager.Instance.currentState == GameManager.GameState.Lose)
+        if (GameManager.Instance.currentState == GameManager.GameState.Lose)
         {
-            GameManager.Instance.RestartState();
+            GameManager.Instance.RestartGame();
         }
         else
         {
@@ -70,13 +70,14 @@ public class UIManager : MonoBehaviour
 
     public void HandlePause()
     {
-        if (GameManager.Instance.currentState == GameManager.GameState.Play)
-        {
-            ShowElements(pauseObjects);
-        }
-        else if (GameManager.Instance.currentState == GameManager.GameState.Pause)
+        if(GameManager.Instance.isPaused)
         {
             HideElements(pauseObjects);
+        }
+        else if(!GameManager.Instance.isPaused && GameManager.Instance.currentState != GameManager.GameState.Menu)
+        {
+            ShowElements(pauseObjects);
+            
         }
         GameManager.Instance.TogglePause();
     }

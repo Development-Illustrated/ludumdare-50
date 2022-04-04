@@ -30,12 +30,18 @@ public class Hazzard : MonoBehaviour
 
     public void BeHazardous()
     {
+        if(isHazardous)
+        {
+            return;
+        }
+        
         isHazardous = true;
         if (ongoingPs != null)
         {
             ongoingPs.Play();
         }
         playAudio.PlayContinous(continuousHazzardSoundFX);
+
         try
         {
             CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
@@ -70,6 +76,11 @@ public class Hazzard : MonoBehaviour
     public void ClearHazzard()
     {
         
+        if(!isHazardous)
+        {
+            return;
+        }
+
         Debug.Log("Clearing Hazzard: " + this.name);
         isHazardous = false;
 
