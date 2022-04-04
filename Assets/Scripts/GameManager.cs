@@ -65,6 +65,24 @@ public class GameManager : Singleton<GameManager>
         {
             Time.timeScale = 1;
         }
+        else if(newState == GameState.Lose)
+        {
+            Time.timeScale = 0;
+        }
+        else if(currentState == GameState.Lose && newState == GameState.Play)
+        {
+            Time.timeScale = 1f;
+            SceneManager.UnloadSceneAsync(gameSceneName);
+            SceneManager.LoadScene(gameSceneName, LoadSceneMode.Additive);
+
+        }
+        else if(currentState == GameState.Lose && newState == GameState.Menu)
+        {
+            Time.timeScale = 1f;
+            SceneManager.UnloadSceneAsync(gameSceneName);
+            SceneManager.LoadScene(fakeSceneName, LoadSceneMode.Additive);
+
+        }
 
         currentState = newState;
     }
