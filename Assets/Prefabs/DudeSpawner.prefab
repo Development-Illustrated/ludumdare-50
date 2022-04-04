@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnpoints: []
-  timeBetweenSpawns: 5
+  timeBetweenSpawns: 3
   dudePrefab: {fileID: 5160140222139861967, guid: 02dbd6eab6f56495e924df1e980ec8eb, type: 3}
