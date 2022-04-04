@@ -46,7 +46,7 @@ public class CountManager : MonoBehaviour
 
     void Start()
     {
-        score = GameObject.FindGameObjectsWithTag("Score");
+        scoreObjects = GameObject.FindGameObjectsWithTag("Score");
         hazardCount = 0;
         populationCount = 0;
         deadCount = 0;
@@ -65,7 +65,7 @@ public class CountManager : MonoBehaviour
         foreach (GameObject score in scoreObjects)
         {
             Text txt = score.GetComponent<Text>();
-            txt.Text = "Score: " + CalculateScore();
+            txt.text = "Score: " + CalculateScore();
         }
     }
 

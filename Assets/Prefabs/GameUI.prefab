@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1211523168}
   m_Layer: 5
   m_Name: Score
-  m_TagString: Untagged
+  m_TagString: Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,6 +271,7 @@ MonoBehaviour:
   hazardCounter: {fileID: 4306539405428019912}
   populationCounter: {fileID: 4306539406316018567}
   deadCounter: {fileID: 4306539406630459073}
+  scoreObjects: []
   hazardCount: 0
   populationCount: 0
   deadCount: 0
