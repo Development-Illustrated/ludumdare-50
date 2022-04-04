@@ -888,7 +888,7 @@
   <object id="85" name="Copier" type="Copier" gid="230" x="672" y="-288" width="32" height="32"/>
   <object id="86" name="Copier" type="Copier" gid="230" x="704" y="-288" width="32" height="32"/>
  </objectgroup>
- <layer id="26" name="b" width="50" height="38" opacity="0.26">
+ <layer id="26" name="b" width="50" height="38" visible="0" opacity="0.26">
   <data encoding="csv">
    <chunk x="0" y="-32" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
