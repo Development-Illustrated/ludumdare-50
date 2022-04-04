@@ -15,9 +15,13 @@ public class PlayAudio : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayOneShot(AudioClip clip)
+    public void PlayOneShot(AudioClip clip, float overrideVolume = 1)
     {
-        audioSource.PlayOneShot(clip, volume);
+        if(overrideVolume != volume)
+            audioSource.PlayOneShot(clip, volume);
+        else
+            audioSource.PlayOneShot(clip, overrideVolume);
+
     }
 
     public void PlayContinous(AudioClip clip)
