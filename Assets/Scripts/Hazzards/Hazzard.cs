@@ -71,23 +71,19 @@ public class Hazzard : MonoBehaviour
     {
         
         Debug.Log("Clearing Hazzard: " + this.name);
-        playAudio.StopPlaying();
-
-        if (killSelfOnClear)
-        {
-            Destroy(this.gameObject);
-        }
-        else if (decayScript)
-        {
-            decayScript.FixHazard();
-        }
         isHazardous = false;
-            
-    
+
+        playAudio.StopPlaying();
         if (ongoingPs != null)
         {
             ongoingPs.Stop();
         }
+
+        if (decayScript)
+        {
+            decayScript.ResetDecay();
+        }        
+    
         try
         {
             CountManager.Instance.decrementCount(CountManager.CountType.Hazard);
@@ -96,7 +92,12 @@ public class Hazzard : MonoBehaviour
         {
             // woops
         }
-    
+
+        if (killSelfOnClear)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
 
     }
 }

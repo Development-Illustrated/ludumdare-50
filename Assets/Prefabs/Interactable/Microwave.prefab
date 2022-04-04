@@ -4817,6 +4817,8 @@ GameObject:
   - component: {fileID: 3628313635245821125}
   - component: {fileID: 7500778009228657373}
   - component: {fileID: 2240611349511042504}
+  - component: {fileID: 635175334}
+  - component: {fileID: 635175333}
   m_Layer: 0
   m_Name: Microwave
   m_TagString: Untagged
@@ -4883,6 +4885,8 @@ MonoBehaviour:
   interactionTime: 3
   alternateSprite: {fileID: 6064590789645122258, guid: 5c8eb556dfae34f20ab0dc1424bb11bc, type: 3}
   alternateColor: {r: 0.8679245, g: 0.13510147, b: 0.17900966, a: 1}
+  interactClip: {fileID: 8300000, guid: 3d2c2828595425b40b776062d7df8d47, type: 3}
+  available: 0
 --- !u!114 &7500778009228657373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4904,7 +4908,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3628313635245821146}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 497d2ad8a685c446a98d809fb80cd2e3, type: 3}
   m_Name: 
@@ -4912,8 +4916,121 @@ MonoBehaviour:
   killsPlayer: 1
   killSelfOnClear: 0
   effectPs: {fileID: 0}
-  ongoingPs: {fileID: 4410932255031875367}
-  interactionColor: {r: 0.5411765, g: 1, b: 0.5058824, a: 1}
+  ongoingPs: {fileID: 0}
+  interactionColor: {r: 0.5411765, g: 1, b: 0.5058824, a: 0.99215686}
+  hazzardSoundFX: {fileID: 8300000, guid: 64379a649e044614e9a1de5af2e5ff7b, type: 3}
+  continuousHazzardSoundFX: {fileID: 8300000, guid: 58b30d8bb7298f948ad6c293f05be76d, type: 3}
+  isHazardous: 0
+--- !u!82 &635175334
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628313635245821146}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6463962618981000658, guid: d613088a4ef9240519a6f528a27c9375, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &635175333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628313635245821146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c09095be77049c18d59611847df331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 1
+  continousVolume: 0.1
 --- !u!1 &3628313636491399439
 GameObject:
   m_ObjectHideFlags: 0

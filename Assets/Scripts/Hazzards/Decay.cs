@@ -47,9 +47,8 @@ public class Decay : MonoBehaviour
         hazardScript.BeHazardous();
     }
 
-    public void FixHazard()
+    public void ResetDecay()
     {
-        Debug.Log("Hazard has been fixed");
         currentUses = 0;
         isDecayed = false;
         elapsedTime = Time.time;
