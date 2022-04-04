@@ -17,6 +17,7 @@ public class DudeController : MonoBehaviour
     [SerializeField] private float randomChanceChangeDirection;
     [SerializeField] int outerWallLayer = 8;
     [SerializeField] List<AudioClip> deathSounds;
+    [SerializeField] List<AudioClip> rareDeathSounds;
     
     Animator anim;
 
@@ -168,7 +169,12 @@ public class DudeController : MonoBehaviour
 
     private void PlayDeathSound()
     {
-        AudioClip chosenClip = deathSounds[Random.Range(0, deathSounds.Count)];
+        AudioClip chosenClip;
+        if(Random.Range(0, 200) > 198)
+        {
+            chosenClip = deathSounds[Random.Range(0, rareDeathSounds.Count)];    
+        }
+        chosenClip = deathSounds[Random.Range(0, deathSounds.Count)];
         playAudio.PlayOneShot(chosenClip);
     }
 

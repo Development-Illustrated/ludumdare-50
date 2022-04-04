@@ -59,9 +59,13 @@ MonoBehaviour:
   deathSounds:
   - {fileID: 8300000, guid: 6caa8907a61eb97439e3abc6b622c5d8, type: 3}
   - {fileID: 8300000, guid: b972be819f47d13488ccb6dfe0f7639d, type: 3}
+  - {fileID: 8300000, guid: 2e07ffc13ba0c6f4186d4c8f38ed80c9, type: 3}
+  - {fileID: 8300000, guid: 2e07ffc13ba0c6f4186d4c8f38ed80c9, type: 3}
+  - {fileID: 8300000, guid: 37caf5b1760e72e4996fe1fe63a2ca61, type: 3}
+  - {fileID: 8300000, guid: 2e07ffc13ba0c6f4186d4c8f38ed80c9, type: 3}
+  rareDeathSounds:
   - {fileID: 8300000, guid: d3e4b53100a2cda478ff5b22a721e26d, type: 3}
   - {fileID: 8300000, guid: 6b454d4ef79536d40939c3740c9afacc, type: 3}
-  - {fileID: 8300000, guid: 37caf5b1760e72e4996fe1fe63a2ca61, type: 3}
   isAlive: 0
 --- !u!70 &5160140222139861966
 CapsuleCollider2D:
