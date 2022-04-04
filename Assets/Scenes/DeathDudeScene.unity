@@ -804,10 +804,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liftIndex: 0
   liftCooldownTime: 2
-  liftTravelCooldownTime: 1
+  liftTravelCooldownTime: 0.8
   closedDoors: {fileID: 263886965479518206, guid: f9b06c9c08b6744c2a4c178697fe61ac, type: 3}
   openDoors: {fileID: -5212806505647604513, guid: f9b06c9c08b6744c2a4c178697fe61ac, type: 3}
-  liftClip: {fileID: 8300000, guid: da1265b39fa7abd449fef45929a066f9, type: 3}
+  liftClip: {fileID: 8300000, guid: b3e9675b59efa7c4d83da58f4e27e559, type: 3}
   liftAvailable: 0
 --- !u!212 &288070526
 SpriteRenderer:
@@ -1128,10 +1128,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liftIndex: 0
   liftCooldownTime: 2
-  liftTravelCooldownTime: 1
+  liftTravelCooldownTime: 0.8
   closedDoors: {fileID: 263886965479518206, guid: f9b06c9c08b6744c2a4c178697fe61ac, type: 3}
   openDoors: {fileID: -5212806505647604513, guid: f9b06c9c08b6744c2a4c178697fe61ac, type: 3}
-  liftClip: {fileID: 8300000, guid: da1265b39fa7abd449fef45929a066f9, type: 3}
+  liftClip: {fileID: 8300000, guid: b3e9675b59efa7c4d83da58f4e27e559, type: 3}
   liftAvailable: 0
 --- !u!212 &493221515
 SpriteRenderer:
@@ -1437,10 +1437,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liftIndex: 0
   liftCooldownTime: 2
-  liftTravelCooldownTime: 1
+  liftTravelCooldownTime: 0.8
   closedDoors: {fileID: 263886965479518206, guid: f9b06c9c08b6744c2a4c178697fe61ac, type: 3}
   openDoors: {fileID: -5212806505647604513, guid: f9b06c9c08b6744c2a4c178697fe61ac, type: 3}
-  liftClip: {fileID: 8300000, guid: da1265b39fa7abd449fef45929a066f9, type: 3}
+  liftClip: {fileID: 8300000, guid: b3e9675b59efa7c4d83da58f4e27e559, type: 3}
   liftAvailable: 0
 --- !u!212 &652978322
 SpriteRenderer:
@@ -5360,8 +5360,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7199731468743586329, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: liftClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b3e9675b59efa7c4d83da58f4e27e559, type: 3}
+    - target: {fileID: 7199731468743586329, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
       propertyPath: liftCooldownTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199731468743586329, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: liftTravelCooldownTime
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7199731469910848453, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
       propertyPath: m_Name
