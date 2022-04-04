@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.4" name="Office Tileset" tilewidth="32" tileheight="32" tilecount="225" columns="15">
+<tileset version="1.8" tiledversion="1.8.2" name="Office Tileset" tilewidth="32" tileheight="32" tilecount="225" columns="15">
  <image source="../../Artwork/Tileset.png" width="500" height="500"/>
  <tile id="16">
   <objectgroup draworder="index" id="2">
@@ -27,13 +27,20 @@
   </objectgroup>
  </tile>
  <tile id="22">
+  <properties>
+   <property name="unity:layer" value="OuterWall"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0" y="0" width="32" height="32"/>
+   <object id="2" x="0" y="0" width="8" height="32"/>
   </objectgroup>
  </tile>
  <tile id="24">
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0" y="0" width="32" height="32"/>
+   <object id="5" x="24" y="0" width="8" height="32">
+    <properties>
+     <property name="unity:layer" value="OuterWall"/>
+    </properties>
+   </object>
   </objectgroup>
  </tile>
  <tile id="26">
@@ -72,6 +79,9 @@
   </objectgroup>
  </tile>
  <tile id="46">
+  <properties>
+   <property name="unity:layer" value="OuterWall"/>
+  </properties>
   <objectgroup draworder="index" id="3">
    <object id="3" x="0" y="0" width="8" height="32"/>
   </objectgroup>
@@ -82,16 +92,25 @@
   </objectgroup>
  </tile>
  <tile id="60">
+  <properties>
+   <property name="unity:layer" value="OuterWall"/>
+  </properties>
   <objectgroup draworder="index" id="2">
    <object id="1" x="24" y="0" width="8" height="32"/>
   </objectgroup>
  </tile>
  <tile id="61">
+  <properties>
+   <property name="unity:layer" value="OuterWall"/>
+  </properties>
   <objectgroup draworder="index" id="2">
    <object id="2" x="0" y="0" width="8" height="32"/>
   </objectgroup>
  </tile>
  <tile id="75">
+  <properties>
+   <property name="unity:layer" value="OuterWall"/>
+  </properties>
   <objectgroup draworder="index" id="2">
    <object id="1" x="24" y="0" width="8" height="32"/>
   </objectgroup>
