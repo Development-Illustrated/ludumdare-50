@@ -270,9 +270,11 @@ MonoBehaviour:
   hazardCounter: {fileID: 0}
   populationCounter: {fileID: 0}
   deadCounter: {fileID: 0}
+  scoreObjects: []
   hazardCount: 0
   populationCount: 0
   deadCount: 0
+  hazardFixedCount: 0
 --- !u!4 &246837686
 Transform:
   m_ObjectHideFlags: 0
@@ -431,6 +433,10 @@ PrefabInstance:
     - target: {fileID: 7199731469910848453, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
       propertyPath: m_Name
       value: LiftManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199731469910848453, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7199731469910848455, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
       propertyPath: m_RootOrder
