@@ -10,16 +10,48 @@ public class Hazzard : MonoBehaviour
     [SerializeField] ParticleSystem effectPs;
     [SerializeField] ParticleSystem ongoingPs;
     [SerializeField] Color interactionColor;
+    [SerializeField] AudioClip hazzardSoundFX;
+    [SerializeField] AudioClip continuousHazzardSoundFX;
     Color ogColor;
-
+    PlayAudio playAudio;
     SpriteRenderer spriteRenderer;
     private Decay decayScript;
 
+    public bool isHazardous;
+
     void Start()
     {
+        isHazardous = false;
         decayScript = this.gameObject.GetComponent<Decay>();
         spriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
         ogColor = spriteRenderer.color;
+        playAudio = this.gameObject.GetComponent<PlayAudio>();
+    }
+
+    public void BeHazardous()
+    {
+        isHazardous = true;
+        if (ongoingPs != null)
+        {
+            ongoingPs.Play();
+        }
+        playAudio.PlayContinous(continuousHazzardSoundFX);
+        try
+        {
+            CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
+        }
+        catch (System.NullReferenceException)
+        {
+
+            // Woops
+        }
+
+    }
+
+    public void PlayHazardFX()
+    {
+        playAudio.PlayOneShot(hazzardSoundFX);
+        // Play one of particle system
     }
 
 
@@ -37,7 +69,10 @@ public class Hazzard : MonoBehaviour
 
     public void ClearHazzard()
     {
+        
         Debug.Log("Clearing Hazzard: " + this.name);
+        playAudio.StopPlaying();
+
         if (killSelfOnClear)
         {
             Destroy(this.gameObject);
@@ -46,29 +81,9 @@ public class Hazzard : MonoBehaviour
         {
             decayScript.FixHazard();
         }
-        ongoingPs.Stop();
-
-    }
-
-    private void OnEnable()
-    {
-        if (ongoingPs != null)
-        {
-            ongoingPs.Play();
-        }
-        try
-        {
-            CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
-        }
-        catch (System.NullReferenceException)
-        {
-
-            // Woops
-        }
-    }
-
-    private void OnDisable()
-    {
+        isHazardous = false;
+            
+    
         if (ongoingPs != null)
         {
             ongoingPs.Stop();
@@ -81,5 +96,7 @@ public class Hazzard : MonoBehaviour
         {
             // woops
         }
+    
+
     }
 }

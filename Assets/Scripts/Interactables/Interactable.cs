@@ -76,9 +76,10 @@ public class Interactable : MonoBehaviour
         spriteRenderer.sprite = originalSprite;
         spriteRenderer.color = originalColor;
         
-        if(hazzard != null && hazzard.enabled && hazzard.killsPlayer && dudeInteracting.isAlive)
+        if(hazzard != null && hazzard.isHazardous && hazzard.killsPlayer && dudeInteracting.isAlive)
         {
             dudeInteracting.Kill();
+            hazzard.PlayHazardFX();
         }
     }
 }

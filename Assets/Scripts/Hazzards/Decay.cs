@@ -44,7 +44,7 @@ public class Decay : MonoBehaviour
         Debug.Log(this.name + " hazard has Decayed");
         isDecayed = true;
         elapsedTime = Time.time;
-        hazardScript.enabled = true;
+        hazardScript.BeHazardous();
     }
 
     public void FixHazard()
@@ -53,6 +53,5 @@ public class Decay : MonoBehaviour
         currentUses = 0;
         isDecayed = false;
         elapsedTime = Time.time;
-        hazardScript.enabled = false;
     }
 }

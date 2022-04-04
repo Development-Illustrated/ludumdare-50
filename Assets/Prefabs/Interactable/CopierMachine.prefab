@@ -4886,6 +4886,7 @@ MonoBehaviour:
   alternateSprite: {fileID: -6918296231949332129, guid: 4837526b8ee66430ea28369c9a4ef26c, type: 3}
   alternateColor: {r: 0.8679245, g: 0.13510147, b: 0.17900966, a: 1}
   interactClip: {fileID: 8300000, guid: 73c88a138d45b624a9e27371b9d3abd3, type: 3}
+  available: 0
 --- !u!114 &7500778009228657373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4907,7 +4908,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3628313635245821146}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 497d2ad8a685c446a98d809fb80cd2e3, type: 3}
   m_Name: 
@@ -4917,6 +4918,9 @@ MonoBehaviour:
   effectPs: {fileID: 0}
   ongoingPs: {fileID: 4410932255031875367}
   interactionColor: {r: 0.5411765, g: 1, b: 0.5058824, a: 0.99215686}
+  hazzardSoundFX: {fileID: 8300000, guid: 46db4a73797d5184885f7c250bd758d1, type: 3}
+  continuousHazzardSoundFX: {fileID: 8300000, guid: 58b30d8bb7298f948ad6c293f05be76d, type: 3}
+  isHazardous: 0
 --- !u!82 &1653915906
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5026,6 +5030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: 1
+  continousVolume: 0.5
 --- !u!1 &3628313636491399439
 GameObject:
   m_ObjectHideFlags: 0
