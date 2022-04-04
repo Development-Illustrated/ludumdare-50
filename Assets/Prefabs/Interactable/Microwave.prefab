@@ -4977,6 +4977,7 @@ MonoBehaviour:
   ongoingPs: {fileID: 4410932255031875367}
   interactionColor: {r: 0.5411765, g: 1, b: 0.5058824, a: 0.99215686}
   hazzardSoundFX: {fileID: 8300000, guid: 64379a649e044614e9a1de5af2e5ff7b, type: 3}
+  fixHazardClip: {fileID: 8300000, guid: 832b3ef21dcef3f4db0544d604d02a35, type: 3}
   hazzardSoundFXVolume: 1.5
   continuousHazzardSoundFX: {fileID: 8300000, guid: 58b30d8bb7298f948ad6c293f05be76d, type: 3}
   isHazardous: 0

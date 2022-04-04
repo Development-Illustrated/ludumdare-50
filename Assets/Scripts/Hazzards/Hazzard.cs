@@ -11,6 +11,7 @@ public class Hazzard : MonoBehaviour
     [SerializeField] ParticleSystem ongoingPs;
     [SerializeField] Color interactionColor;
     [SerializeField] AudioClip hazzardSoundFX;
+    [SerializeField] AudioClip fixHazardClip;
     [SerializeField] float hazzardSoundFXVolume = 1f;
     [SerializeField] AudioClip continuousHazzardSoundFX;
     Color ogColor;
@@ -86,6 +87,7 @@ public class Hazzard : MonoBehaviour
         isHazardous = false;
 
         playAudio.StopPlaying();
+        playAudio.PlayOneShot(fixHazardClip);
         if (ongoingPs != null)
         {
             ongoingPs.Stop();
