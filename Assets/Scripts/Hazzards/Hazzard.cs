@@ -97,6 +97,8 @@ public class Hazzard : MonoBehaviour
     
         try
         {
+            CountManager.Instance
+                .incrementCount(CountManager.CountType.HazardFixed);
             CountManager.Instance.decrementCount(CountManager.CountType.Hazard);
         }
         catch (System.NullReferenceException)

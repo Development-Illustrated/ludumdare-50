@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : Singleton<GameManager>
@@ -17,9 +18,10 @@ public class GameManager : Singleton<GameManager>
     public bool isPaused;
 
     [SerializeField]
-    private string gameSceneName = "GameScene";
+    private string gameSceneName = "PlaytestScene";
     [SerializeField] private string fakeSceneName = "FakeGameMainMenuScene";
     [SerializeField] GameObject blueEffect;
+    [SerializeField] GameObject scoreComponent;
     [SerializeField] MusicManager musicManager;
 
     private void Awake() 
@@ -60,6 +62,9 @@ public class GameManager : Singleton<GameManager>
         }
         else if(newState == GameState.Lose)
         {
+            int score = CountManager.Instance.CalculateScore();
+            Text scoreTxt = scoreComponent.GetComponent<Text>();
+            scoreTxt.text = "Score: " + score;
             PauseGame();
             musicManager.ResetCurrentTrack();
         }

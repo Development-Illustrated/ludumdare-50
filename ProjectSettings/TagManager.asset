@@ -9,6 +9,7 @@ TagManager:
   - ShowOnGamePause
   - ShowInGame
   - SpawnPoint
+  - Score
   layers:
   - Default
   - TransparentFX
