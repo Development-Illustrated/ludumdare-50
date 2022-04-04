@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 3271e4d0be67a904492f5d0e47c5eab9
+guid: 09a1a8dfd2943bc4da08a0628620375b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2834816866031520189
-    second: StartButton_0
+      213: 5441968085629492590
+    second: ButtonRestart_0
   - first:
-      213: 144607954711566811
-    second: StartButton_1
+      213: 2759662110552576521
+    second: ButtonRestart_1
   - first:
-      213: 1409554443580534697
-    second: StartButton_2
+      213: 1792096374675083217
+    second: ButtonRestart_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StartButton_0
+      name: ButtonRestart_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 64
-        height: 16
+        y: 1
+        width: 71
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,20 +126,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 346b7e07415b8a8d0800000000000000
-      internalID: -2834816866031520189
+      spriteID: e6d55fe1421c58b40800000000000000
+      internalID: 5441968085629492590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StartButton_1
+      name: ButtonRestart_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 16
+        x: 80
+        y: 1
+        width: 71
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd9574c2b20c10200800000000000000
-      internalID: 144607954711566811
+      spriteID: 9025797711a4c4620800000000000000
+      internalID: 2759662110552576521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StartButton_2
+      name: ButtonRestart_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 16
+        x: 160
+        y: 1
+        width: 70
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,8 +168,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9afe03d5c4ebf8310800000000000000
-      internalID: 1409554443580534697
+      spriteID: 1df06c7682eced810800000000000000
+      internalID: 1792096374675083217
       vertices: []
       indices: 
       edges: []
