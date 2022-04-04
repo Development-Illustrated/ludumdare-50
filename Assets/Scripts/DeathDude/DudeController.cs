@@ -15,6 +15,7 @@ public class DudeController : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float timeBetweenDecisions;
     [SerializeField] private float randomChanceChangeDirection;
+    [SerializeField] int outerWallLayer = 8;
     Animator anim;
 
     [Header("State")]
@@ -180,6 +181,15 @@ public class DudeController : MonoBehaviour
         if (other.gameObject.GetComponent<Lift>())
         {
             other.gameObject.GetComponent<Lift>().EnterLift(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.gameObject.layer == 8)
+        {
+            //reverse direction
+            isGoingRight = !isGoingRight;
         }
     }
 }

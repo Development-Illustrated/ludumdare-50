@@ -600,7 +600,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 15
+    maxNumParticles: 30
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 3
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -2678,7 +2678,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -4758,7 +4758,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4916,7 +4916,7 @@ MonoBehaviour:
   killsPlayer: 1
   killSelfOnClear: 0
   effectPs: {fileID: 0}
-  ongoingPs: {fileID: 0}
+  ongoingPs: {fileID: 4410932255031875367}
   interactionColor: {r: 0.5411765, g: 1, b: 0.5058824, a: 0.99215686}
   hazzardSoundFX: {fileID: 8300000, guid: 46db4a73797d5184885f7c250bd758d1, type: 3}
   continuousHazzardSoundFX: {fileID: 8300000, guid: c791abc6c0d96e745a5554b72f514f6a, type: 3}
