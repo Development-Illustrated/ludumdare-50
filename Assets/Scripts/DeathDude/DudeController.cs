@@ -188,7 +188,7 @@ public class DudeController : MonoBehaviour
     {
         if(other.gameObject.layer == 8)
         {
-            //reverseDirection
+            //reverse direction
             isGoingRight = !isGoingRight;
         }
     }
