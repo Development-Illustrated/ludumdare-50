@@ -1145,6 +1145,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.49
       objectReference: {fileID: 0}
+    - target: {fileID: 7199731468743586330, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199731468743586330, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2138936335
+      objectReference: {fileID: 0}
     - target: {fileID: 7199731469910848453, guid: a55bc95c92517435593d942d7f279e8b, type: 3}
       propertyPath: m_Name
       value: LiftManager
@@ -1984,6 +1992,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1382497094}
+    - target: {fileID: 4913346477394769529, guid: 44665a94df91a446cb2b326fba993e02, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44665a94df91a446cb2b326fba993e02, type: 3}
 --- !u!1 &1832075954
@@ -2184,7 +2196,7 @@ Camera:
   far clip plane: 1000
   field of view: 11.421186
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

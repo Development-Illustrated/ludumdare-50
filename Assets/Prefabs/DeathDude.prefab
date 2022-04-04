@@ -53,6 +53,7 @@ MonoBehaviour:
   gravity: 5
   timeBetweenDecisions: 4
   randomChanceChangeDirection: 0.5
+  outerWallLayer: 8
   isAlive: 0
 --- !u!70 &5160140222139861966
 CapsuleCollider2D:
@@ -130,7 +131,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2138936335
   m_SortingLayer: 5
-  m_SortingOrder: 10
+  m_SortingOrder: 150
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
