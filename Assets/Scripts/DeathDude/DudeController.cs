@@ -58,10 +58,14 @@ public class DudeController : MonoBehaviour
         {
             if (Time.time > resumeTime)
             {
-                currentInteractable.StopInteract();
+                currentInteractable.StopInteract(this);
                 currentInteractable = null;
-                anim.SetBool("IsInteracting", false);
-                anim.SetBool("IsWalking", false);
+                if(isAlive)
+                {
+                    
+                    anim.SetBool("IsInteracting", false);
+                    anim.SetBool("IsWalking", false);
+                }
             }
         }
 
@@ -158,13 +162,20 @@ public class DudeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(this.name + " dude triggered with " + other.name);
+                    
         if (other.gameObject.GetComponent<Interactable>())
         {
-            currentInteractable = other.gameObject.GetComponent<Interactable>();
-            int interactionTime = currentInteractable.Interact(this.gameObject);
-            resumeTime = Time.time + interactionTime;
-            anim.SetBool("IsInteracting", true);
-            anim.SetBool("IsWalking", false);
+            Interactable tmpInteractable = other.gameObject.GetComponent<Interactable>();
+            if(tmpInteractable.available)
+            {
+                currentInteractable = tmpInteractable;
+                int interactionTime = currentInteractable.Interact();
+                resumeTime = Time.time + interactionTime;
+                anim.SetBool("IsInteracting", true);
+                anim.SetBool("IsWalking", false);
+            }
+            
         }
         if (other.gameObject.GetComponent<Lift>())
         {

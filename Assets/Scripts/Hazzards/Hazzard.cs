@@ -10,35 +10,50 @@ public class Hazzard : MonoBehaviour
     [SerializeField] ParticleSystem effectPs;
     [SerializeField] ParticleSystem ongoingPs;
     [SerializeField] Color interactionColor;
+    [SerializeField] AudioClip hazzardSoundFX;
+    [SerializeField] AudioClip continuousHazzardSoundFX;
     Color ogColor;
-
+    PlayAudio playAudio;
     SpriteRenderer spriteRenderer;
     private Decay decayScript;
 
+    public bool isHazardous;
+
     void Start()
     {
+        isHazardous = false;
         decayScript = this.gameObject.GetComponent<Decay>();
         spriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
         ogColor = spriteRenderer.color;
+        playAudio = this.gameObject.GetComponent<PlayAudio>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void BeHazardous()
     {
-        if (this.enabled)
+        isHazardous = true;
+        if (ongoingPs != null)
         {
-            Debug.Log(this.name + " triggerEnterHit");
-            if (effectPs != null)
-            {
-                effectPs.Play();
-            }
-
-            Debug.Log("YO WE HERE BITCH BOI");
-            if (killsPlayer)
-            {
-                other.gameObject.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
-            }
+            ongoingPs.Play();
         }
+        playAudio.PlayContinous(continuousHazzardSoundFX);
+        try
+        {
+            CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
+        }
+        catch (System.NullReferenceException)
+        {
+
+            // Woops
+        }
+
     }
+
+    public void PlayHazardFX()
+    {
+        playAudio.PlayOneShot(hazzardSoundFX);
+        // Play one of particle system
+    }
+
 
     public void OutlineMe(bool doIt)
     {
@@ -54,42 +69,21 @@ public class Hazzard : MonoBehaviour
 
     public void ClearHazzard()
     {
+        
         Debug.Log("Clearing Hazzard: " + this.name);
-        if (killSelfOnClear)
-        {
-            Destroy(this.gameObject);
-        }
-        else if (decayScript)
-        {
-            decayScript.FixHazard();
-        }
-        ongoingPs.Stop();
+        isHazardous = false;
 
-    }
-
-    private void OnEnable()
-    {
-        if (ongoingPs != null)
-        {
-            ongoingPs.Play();
-        }
-        try
-        {
-            CountManager.Instance.incrementCount(CountManager.CountType.Hazard);
-        }
-        catch (System.NullReferenceException)
-        {
-
-            // Woops
-        }
-    }
-
-    private void OnDisable()
-    {
+        playAudio.StopPlaying();
         if (ongoingPs != null)
         {
             ongoingPs.Stop();
         }
+
+        if (decayScript)
+        {
+            decayScript.ResetDecay();
+        }        
+    
         try
         {
             CountManager.Instance.decrementCount(CountManager.CountType.Hazard);
@@ -98,5 +92,12 @@ public class Hazzard : MonoBehaviour
         {
             // woops
         }
+
+        if (killSelfOnClear)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
     }
 }

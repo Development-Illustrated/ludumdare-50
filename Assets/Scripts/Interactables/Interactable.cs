@@ -10,19 +10,30 @@ public class Interactable : MonoBehaviour
     [SerializeField] private int interactionTime;
     [SerializeField] private Sprite alternateSprite;
     [SerializeField] private Color alternateColor;
+
+    [SerializeField]
+    private AudioClip interactClip;
+
+    private PlayAudio playAudio;
     private Sprite originalSprite;
     private Color originalColor;
 
     private float timeUntilStartInteraction = 0f;
     private float timeUntilStopInteraction = 0f;
+    public bool available;
 
     private Decay decayScript;
+
+    private Hazzard hazzard;
     void Start()
     {
+        hazzard = GetComponent<Hazzard>();
+        available = true;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         originalSprite = spriteRenderer.sprite;
         decayScript = GetComponent<Decay>();
+        playAudio = GetComponent<PlayAudio>();
     }
 
     void Update()
@@ -39,29 +50,37 @@ public class Interactable : MonoBehaviour
             }
             timeUntilStartInteraction = 0f;
         }
-        if (timeUntilStopInteraction > 0f && Time.time > timeUntilStopInteraction)
-        {
-            spriteRenderer.sprite = originalSprite;
-            spriteRenderer.color = originalColor;
-            timeUntilStopInteraction = 0f;
-        }
     }
 
-    public int Interact(GameObject obj = null)
+    public int Interact()
     {
         Debug.Log("Started interacting with " + this.name);
+        available = false;
         timeUntilStartInteraction = Time.time + waitBeforeInteraction;
         if (decayScript)
         {
             decayScript.OnUse();
         }
+        if (playAudio)
+        {
+            playAudio.PlayOneShot(interactClip);
+        }
         return interactionTime;
     }
 
-    public void StopInteract()
+    public void StopInteract(DudeController dudeInteracting)
     {
         Debug.Log("Stopped interacting with " + this.name);
+        available = true;
         timeUntilStopInteraction = Time.time + waitAfterInteraction;
+        spriteRenderer.sprite = originalSprite;
+        spriteRenderer.color = originalColor;
+        
+        if(hazzard != null && hazzard.isHazardous && hazzard.killsPlayer && dudeInteracting.isAlive)
+        {
+            dudeInteracting.Kill();
+            hazzard.PlayHazardFX();
+        }
     }
 }
 

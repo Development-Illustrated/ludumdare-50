@@ -44,33 +44,45 @@ public class PlayerController : MonoBehaviour
 
     public void HandleInteract(InputAction.CallbackContext context)
     {
-        if (currentHazzard)
+        if (currentHazzard && currentHazzard.isHazardous)
         {
-            currentHazzard.SendMessage("ClearHazzard", null);
+            currentHazzard.ClearHazzard();
         }
     }
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Trigger entered with: " + col.name);
-        if (col.gameObject.GetComponent<Hazzard>())
+        Debug.Log("Hazzard trigger entered with: " + col.name);
+        if (col.gameObject.GetComponent<Hazzard>() != null)
         {
-            Hazzard hazzard = col.gameObject.GetComponent<Hazzard>();
-            if (hazzard.enabled)
+            Hazzard hazzard = col.gameObject.GetComponent<Hazzard>();  
+            if(currentHazzard)
             {
-                currentHazzard = col.gameObject.GetComponent<Hazzard>();
-                currentHazzard.SendMessage("OutlineMe", true);
+                if(hazzard != currentHazzard)
+                {
+                    currentHazzard.OutlineMe(false);
+                    currentHazzard = hazzard;
+                    currentHazzard.OutlineMe(true);
+                }
+            }
+            else
+            {
+                currentHazzard = hazzard;
+                currentHazzard.OutlineMe(true);
             }
         }
     }
 
     public void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("Trigger exited with");
-        if (currentHazzard)
+        if(col.gameObject.GetComponent<Hazzard>()  != null)
         {
-            currentHazzard.SendMessage("OutlineMe", false);
-            currentHazzard = null;
+            Hazzard tmp = col.gameObject.GetComponent<Hazzard>();
+            if(currentHazzard != null && tmp == currentHazzard)
+            {
+                currentHazzard.OutlineMe(false);
+                currentHazzard = null;
+            }
         }
     }
 
