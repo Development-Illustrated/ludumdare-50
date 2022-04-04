@@ -43,10 +43,6 @@ public class Interactable : MonoBehaviour
             {
                 spriteRenderer.color = alternateColor;
             }
-            if (playAudio)
-            {
-                playAudio.PlayOneShot(interactClip);
-            }
             timeUntilStartInteraction = 0f;
         }
         if (timeUntilStopInteraction > 0f && Time.time > timeUntilStopInteraction)
@@ -64,6 +60,10 @@ public class Interactable : MonoBehaviour
         if (decayScript)
         {
             decayScript.OnUse();
+        }
+        if (playAudio)
+        {
+            playAudio.PlayOneShot(interactClip);
         }
         return interactionTime;
     }
