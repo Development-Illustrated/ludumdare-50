@@ -170,11 +170,15 @@ public class DudeController : MonoBehaviour
     private void PlayDeathSound()
     {
         AudioClip chosenClip;
-        if(Random.Range(0, 200) > 198)
+        if(Random.Range(0, 201) > 199)
         {
-            chosenClip = deathSounds[Random.Range(0, rareDeathSounds.Count)];    
+            chosenClip = rareDeathSounds[Random.Range(0, rareDeathSounds.Count)];    
         }
-        chosenClip = deathSounds[Random.Range(0, deathSounds.Count)];
+        else
+        {
+            chosenClip = deathSounds[Random.Range(0, deathSounds.Count)];
+        }
+    
         playAudio.PlayOneShot(chosenClip);
     }
 
